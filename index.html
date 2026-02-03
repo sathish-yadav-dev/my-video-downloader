@@ -6,56 +6,62 @@
     <title>SATHISH YADAV | Pro Downloader</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0b0f19; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: #161d2f; padding: 30px; border-radius: 25px; text-align: center; width: 85%; max-width: 380px; border: 1px solid #2e3a59; box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
+        body { background: #0b1120; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+        .card { background: #1e293b; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 400px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid #334155; }
         
-        .name-brand { font-size: 13px; font-weight: 800; letter-spacing: 2px; color: #fff; background: #4f46e5; display: inline-block; padding: 5px 15px; border-radius: 50px; margin-bottom: 15px; text-transform: uppercase; }
-        .social-icons { font-size: 22px; margin-bottom: 12px; display: flex; justify-content: center; gap: 20px; }
+        /* బ్రాండింగ్ స్టైల్ */
+        .name-badge { font-size: 12px; font-weight: 800; background: #4f46e5; padding: 5px 15px; border-radius: 50px; display: inline-block; margin-bottom: 15px; letter-spacing: 2px; }
+        .social-icons { font-size: 20px; margin-bottom: 10px; display: flex; justify-content: center; gap: 15px; }
         .fa-instagram { color: #e1306c; } .fa-youtube { color: #ff0000; }
-        .downloader-text { font-size: 22px; font-weight: 900; color: #818cf8; margin-bottom: 25px; }
+        .title { font-size: 22px; font-weight: 900; color: #818cf8; margin-bottom: 25px; }
 
-        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 15px; outline: none; }
-        .main-btn { background: #4f46e5; color: white; padding: 16px; border: none; border-radius: 12px; width: 100%; font-weight: bold; font-size: 17px; cursor: pointer; }
+        .input-box { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 14px; outline: none; }
+        .gen-btn { background: #4f46e5; color: white; padding: 16px; border: none; border-radius: 12px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; }
         
-        /* ఫలితం చూపించే బాక్స్ */
-        #result-box { display: none; margin-top: 20px; padding: 15px; background: #1e293b; border-radius: 15px; border: 1px dashed #4f46e5; }
-        .dl-final { background: #10b981; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 10px; }
+        /* ఫలితం చూపించే ఏరియా */
+        #download-box { display: none; margin-top: 25px; padding: 20px; background: #0f172a; border-radius: 15px; border: 1px solid #4f46e5; animation: slideUp 0.5s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .final-dl-btn { background: #10b981; color: white; padding: 14px 25px; border-radius: 10px; text-decoration: none; font-weight: bold; display: block; margin-top: 15px; box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4); }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <div class="name-brand">SATHISH YADAV</div>
+        <div class="name-badge">SATHISH YADAV</div>
         <div class="social-icons">
             <i class="fab fa-instagram"></i> <i class="fab fa-youtube"></i>
         </div>
-        <div class="downloader-text">PRO DOWNLOADER</div>
+        <div class="title">PRO DOWNLOADER</div>
         
-        <input type="text" id="vUrl" placeholder="Paste link here...">
-        <button class="main-btn" onclick="fetchVideo()">GENERATE LINK</button>
+        <input type="text" id="vUrl" class="input-box" placeholder="Paste link here...">
+        <button class="gen-btn" onclick="processVideo()">GENERATE DOWNLOAD</button>
 
-        <div id="result-box">
-            <p style="font-size: 14px; margin: 0;">✅ Video Found!</p>
-            <div id="download-area"></div>
+        <div id="download-box">
+            <p style="color: #10b981; margin: 0; font-size: 14px; font-weight: bold;">✅ Ready to Download!</p>
+            <div id="btn-container"></div>
         </div>
 
-        <div class="footer" style="margin-top:20px; font-size:10px; opacity:0.4;">SATHISH SERVER v6.0</div>
+        <div style="margin-top: 30px; font-size: 10px; opacity: 0.4;">SATHISH SERVER v7.0 • FIXED</div>
     </div>
 
     <script>
-        function fetchVideo() {
-            let u = document.getElementById('vUrl').value.trim();
-            if(!u) { alert("Please paste a link!"); return; }
-            
-            let resBox = document.getElementById('result-box');
-            let dlArea = document.getElementById('download-area');
-            
-            resBox.style.display = "block";
-            dlArea.innerHTML = "<p style='font-size:12px;'>Processing... Please Wait</p>";
+        function processVideo() {
+            let url = document.getElementById('vUrl').value.trim();
+            if(!url) { alert("Please paste a link!"); return; }
 
-            // ఇది మీ సైట్ లోనే డౌన్లోడ్ బటన్ ని చూపిస్తుంది, బయటి సైట్ కి వెళ్లదు
-            let apiUrl = "https://loader.to/api/button/?url=" + encodeURIComponent(u) + "&f=mp4";
-            dlArea.innerHTML = `<iframe src="${apiUrl}" style="width:100%; height:60px; border:none; overflow:hidden;"></iframe>`;
+            let box = document.getElementById('download-box');
+            let container = document.getElementById('btn-container');
+            
+            box.style.display = "block";
+            container.innerHTML = "<p style='font-size:12px; margin-top:10px;'>Fetching secure link...</p>";
+
+            // స్మార్ట్ ట్రిక్: ఇది యూజర్ ని నేరుగా డౌన్లోడ్ మోడ్ లోకి తీసుకెళ్తుంది
+            // ఇది ఏ మొబైల్ లో అయినా బటన్ ని క్లియర్ గా చూపిస్తుంది
+            setTimeout(() => {
+                let dlUrl = "https://ddownloader.com/inspect?url=" + encodeURIComponent(url);
+                container.innerHTML = `<a href="${dlUrl}" target="_blank" class="final-dl-btn">📥 CLICK TO DOWNLOAD VIDEO</a>`;
+            }, 1000);
         }
     </script>
 
