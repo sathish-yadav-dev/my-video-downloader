@@ -3,39 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sathish Video Downloader</title>
+    <title>Sathish's Pro Downloader</title>
     <style>
-        body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: #1e293b; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 400px; }
-        input { width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #334155; background: #0f172a; color: white; margin: 20px 0; box-sizing: border-box; outline: none; }
-        input:focus { border-color: #3b82f6; }
-        button { background: #3b82f6; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; }
-        button:hover { background: #2563eb; }
-        #msg { margin-top: 15px; color: #94a3b8; font-size: 14px; }
+        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 400px; }
+        h1 { font-size: 28px; margin-bottom: 5px; background: linear-gradient(to right, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .icons { font-size: 24px; margin: 15px 0; opacity: 0.8; }
+        input { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #334155; background: #0f172a; color: white; margin: 20px 0; box-sizing: border-box; outline: none; transition: 0.3s; }
+        input:focus { border-color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
+        button { background: #3b82f6; color: white; padding: 15px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; font-size: 16px; transition: 0.3s; }
+        button:hover { background: #2563eb; transform: translateY(-2px); }
+        #status { margin-top: 20px; font-size: 14px; color: #94a3b8; }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>🎥 Video Downloader</h1>
-        <p>Paste YouTube/Instagram link</p>
-        <input type="text" id="url" placeholder="https://...">
-        <button onclick="startDownload()">Download Now</button>
-        <div id="msg"></div>
+        <h1>🎥 Super Downloader</h1>
+        <div class="icons">📱 🎞️ 📸</div>
+        <p style="font-size: 14px; opacity: 0.8;">Paste Link & Download Instantly</p>
+        <input type="text" id="vUrl" placeholder="Paste video link here...">
+        <button onclick="go()">Download Now</button>
+        <div id="status"></div>
+        <p style="margin-top: 25px; font-size: 12px; opacity: 0.5;">Developed by Sathish Yadav</p>
     </div>
     <script>
-        function startDownload() {
-            let link = document.getElementById('url').value;
-            let msg = document.getElementById('msg');
-            if(!link) { 
-                msg.innerText = "❌ Please paste a link!"; 
-                return; 
-            }
-            msg.innerText = "⏳ Processing... Redirecting to server.";
-            // This connects your site to a working download service
+        function go() {
+            let u = document.getElementById('vUrl').value;
+            let s = document.getElementById('status');
+            if(!u) { s.innerText = "❌ Please paste a link first!"; return; }
+            s.innerHTML = "🚀 Opening Secure Download Server...";
             setTimeout(() => {
-                window.open("https://savefrom.net/?url=" + encodeURIComponent(link), "_blank");
-                msg.innerText = "✅ Done! Check the new tab.";
-            }, 2000);
+                window.open("https://savefrom.net/?url=" + encodeURIComponent(u), "_blank");
+            }, 1500);
         }
     </script>
 </body>
