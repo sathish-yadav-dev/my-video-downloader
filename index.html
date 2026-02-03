@@ -3,38 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sathish's Ultimate Downloader</title>
+    <title>Sathish Pro Downloader</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: #1e293b; padding: 30px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 400px; border: 1px solid #334155; }
-        h1 { margin-bottom: 5px; font-size: 26px; color: #3b82f6; }
-        .social-icons { margin: 20px 0; display: flex; justify-content: center; gap: 20px; font-size: 30px; }
+        .card { background: #1e293b; padding: 35px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 400px; border: 1px solid #334155; }
+        h1 { margin-bottom: 10px; font-size: 26px; color: #3b82f6; }
+        .social-icons { margin: 20px 0; display: flex; justify-content: center; gap: 25px; font-size: 35px; }
         .fa-youtube { color: #FF0000; }
         .fa-instagram { color: #E1306C; }
         .fa-facebook { color: #1877F2; }
-        input { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; outline: none; }
-        button { background: #3b82f6; color: white; padding: 15px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; font-size: 16px; }
+        input { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; outline: none; font-size: 16px; }
+        button { background: #3b82f6; color: white; padding: 15px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; font-size: 18px; transition: 0.3s; }
+        button:hover { background: #2563eb; transform: scale(1.02); }
         #status { margin-top: 20px; color: #10b981; font-weight: bold; font-size: 14px; }
+        .footer { margin-top: 25px; font-size: 12px; opacity: 0.5; }
     </style>
 </head>
 <body>
     <div class="card">
         <h1>🎥 Pro Downloader</h1>
-        <p style="font-size: 14px; opacity: 0.7;">Download videos instantly</p>
         <div class="social-icons">
             <i class="fab fa-youtube"></i>
             <i class="fab fa-instagram"></i>
             <i class="fab fa-facebook"></i>
         </div>
         <input type="text" id="vUrl" placeholder="Paste link here...">
-        <button onclick="startDownload()">Download Now</button>
+        <button onclick="download()">Download Now</button>
         <div id="status"></div>
-        <p style="margin-top: 20px; font-size: 11px; opacity: 0.5;">Developed by Sathish Yadav</p>
+        <div class="footer">Developed by Sathish Yadav</div>
     </div>
 
     <script>
-        function startDownload() {
+        function download() {
             const url = document.getElementById('vUrl').value;
             const status = document.getElementById('status');
             
@@ -43,15 +44,12 @@
                 return;
             }
 
-            status.innerHTML = "🚀 Connecting to Global Server...";
+            status.innerHTML = "🚀 Opening Download Server...";
 
-            // అత్యంత నమ్మకమైన 'SaveFrom' సర్వర్ ని వాడుతున్నాను
-            // ఇది చాలా తక్కువ సార్లు డౌన్ అవుతుంది.
-            const serverUrl = "https://savefrom.net/?url=" + encodeURIComponent(url);
-            
+            // అత్యంత నమ్మకమైన సర్వర్ కి రీడైరెక్ట్ చేస్తున్నాము
             setTimeout(() => {
-                window.location.href = serverUrl;
-            }, 1000);
+                window.location.href = "https://savefrom.net/?url=" + encodeURIComponent(url);
+            }, 800);
         }
     </script>
 </body>
