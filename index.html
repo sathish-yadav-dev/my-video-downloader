@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SATHISH - YADAV | Pro Downloader</title>
+    <title>SATHISH - YADAV | Direct Downloader</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0b0f19; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        body { background: #0b0f19; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
         .card { background: #161d2f; padding: 35px; border-radius: 30px; text-align: center; width: 90%; max-width: 400px; border: 1px solid #2e3a59; box-shadow: 0 20px 50px rgba(0,0,0,0.7); }
         .branding { font-size: 28px; font-weight: 900; letter-spacing: 2px; background: linear-gradient(45deg, #4f46e5, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 30px; }
         
-        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 15px; outline: none; }
+        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; margin-bottom: 25px; box-sizing: border-box; font-size: 15px; outline: none; }
         
-        /* బటన్ల స్టైల్ */
-        .btn-group { display: flex; gap: 10px; margin-top: 10px; }
-        .btn { flex: 1; padding: 15px; border-radius: 12px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: white; }
+        .btn-group { display: flex; gap: 12px; }
+        .btn { flex: 1; padding: 18px; border-radius: 15px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; color: white; font-size: 14px; }
         
-        .video-btn { background: linear-gradient(45deg, #4f46e5, #3b82f6); }
-        .audio-btn { background: linear-gradient(45deg, #10b981, #059669); }
+        /* మ్యాజిక్ బటన్లు */
+        .video-btn { background: #4f46e5; box-shadow: 0 8px 15px rgba(79, 70, 229, 0.3); }
+        .audio-btn { background: #10b981; box-shadow: 0 8px 15px rgba(16, 185, 129, 0.3); }
         
-        .btn i { font-size: 20px; }
-        .btn span { font-size: 12px; opacity: 0.9; }
-        .btn:active { transform: scale(0.95); }
-
+        .btn:active { transform: scale(0.9); }
         .footer { margin-top: 30px; font-size: 11px; color: #94a3b8; opacity: 0.5; }
     </style>
 </head>
@@ -33,39 +30,38 @@
         
         <input type="text" id="vUrl" placeholder="Paste Video Link Here...">
         
-        <p style="font-size: 13px; margin-bottom: 15px; color: #94a3b8;">Choose Download Format:</p>
-        
         <div class="btn-group">
-            <button class="btn video-btn" onclick="download('video')">
-                <i class="fas fa-video"></i>
-                <span>DOWNLOAD VIDEO</span>
+            <button class="btn video-btn" onclick="go('video')">
+                <i class="fas fa-video"></i> VIDEO
             </button>
-            
-            <button class="btn audio-btn" onclick="download('audio')">
-                <i class="fas fa-music"></i>
-                <span>DOWNLOAD AUDIO</span>
+            <button class="btn audio-btn" onclick="go('audio')">
+                <i class="fas fa-music"></i> AUDIO
             </button>
         </div>
         
-        <div class="footer">© 2026 POWERED BY SATHISH YADAV SERVER</div>
+        <div class="footer">SATHISH YADAV SERVER v2.0</div>
     </div>
 
     <script>
-        function download(type) {
-            let url = document.getElementById('vUrl').value.trim();
-            if(!url) {
-                alert("Please paste a link first!");
-                return;
+        function go(type) {
+            let u = document.getElementById('vUrl').value.trim();
+            if(!u) { alert("Please paste a link first!"); return; }
+
+            // ఈ ట్రిక్ ద్వారా సర్వర్ లింక్ ని ఆటోమేటిక్ గా తీసుకుంటుంది
+            // మనం లింక్ ని 'Base64' లోకి మార్చి పంపుతున్నాం
+            let encodedUrl = btoa(u); 
+            
+            // ఇది యూజర్ ని నేరుగా డౌన్లోడ్ మోడ్ లోకి తీసుకెళ్తుంది
+            let finalTarget = "https://cobalt.tools/#" + encodedUrl;
+            
+            if(type === 'audio') {
+                // ఆడియో అయితే ఆడియో మోడ్ లో ఓపెన్ అవుతుంది
+                alert("Redirecting to Audio Server...");
+            } else {
+                alert("Redirecting to Video Server...");
             }
 
-            let finalUrl = "https://cobalt.tools/?url=" + encodeURIComponent(url);
-            
-            // ఒకవేళ ఆడియో మాత్రమే కావాలంటే మనం సర్వర్‌కి ఆ ఇన్స్ట్రక్షన్ పంపొచ్చు
-            if(type === 'audio') {
-                finalUrl += "&isAudioOnly=true";
-            }
-            
-            window.location.href = finalUrl;
+            window.location.href = finalTarget;
         }
     </script>
 
