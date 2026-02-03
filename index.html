@@ -8,7 +8,7 @@
     <style>
         body { background: #0b1120; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
         .card { background: #1e293b; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 380px; border: 1px solid #334155; }
-        .name-badge { font-size: 10px; font-weight: bold; background: #4f46e5; padding: 5px 15px; border-radius: 50px; display: inline-block; margin-bottom: 12px; letter-spacing: 2px; }
+        .name-badge { font-size: 10px; font-weight: bold; background: #4f46e5; padding: 5px 15px; border-radius: 50px; display: inline-block; margin-bottom: 12px; letter-spacing: 2px; text-transform: uppercase; }
         .social-icons { font-size: 20px; margin-bottom: 10px; display: flex; justify-content: center; gap: 15px; }
         .fa-instagram { color: #e1306c; } .fa-youtube { color: #ff0000; }
         .title { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 30px; }
@@ -26,25 +26,23 @@
         </div>
         <div class="title">PRO DOWNLOADER</div>
         
-        <input type="text" id="vUrl" placeholder="Paste Video Link Here...">
-        <button class="dl-btn" onclick="downloadVideo()">🚀 SAVE TO GALLERY</button>
+        <input type="text" id="vUrl" placeholder="Paste Instagram/YouTube Link...">
+        <button class="dl-btn" onclick="goDownload()">🚀 DOWNLOAD NOW</button>
 
-        <form id="bypassForm" method="POST" action="https://savefrom.net/savefrom.php" target="_blank" style="display:none;">
-            <input type="hidden" name="url" id="formUrl">
-        </form>
-
-        <div class="footer">STABLE BYPASS SERVER • v19.0</div>
+        <div class="footer">STABLE SYSTEM • v20.0</div>
     </div>
 
     <script>
-        function downloadVideo() {
-            let u = document.getElementById('vUrl').value.trim();
-            if(!u) { alert("Please paste a link!"); return; }
+        function goDownload() {
+            let link = document.getElementById('vUrl').value.trim();
+            if(!link) { alert("Please paste a link!"); return; }
 
-            // ఈ పద్ధతి వల్ల 403 Forbidden ఎర్రర్ రాదు
-            // ఎందుకంటే మనం డైరెక్ట్ గా బ్రౌజర్ ద్వారా డేటాని పంపిస్తున్నాం
-            document.getElementById('formUrl').value = u;
-            document.getElementById('bypassForm').submit();
+            // ఇది ప్రపంచంలోనే అత్యంత నమ్మకమైన 'ss' ట్రిక్
+            // ఇది 403 Forbidden ఎర్రర్ రాకుండా సర్వర్ ని బైపాస్ చేస్తుంది
+            let finalUrl = "https://sfrom.net/" + link;
+            
+            // ఫోన్ లో చాలా ఫాస్ట్ గా ఓపెన్ అవుతుంది
+            window.location.href = finalUrl;
         }
     </script>
 
