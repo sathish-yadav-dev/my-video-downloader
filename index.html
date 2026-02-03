@@ -3,45 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sathish Yadav - High Speed Downloader</title>
+    <title>Sathish Pro Downloader v3</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: #1e293b; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 380px; border: 1px solid #334155; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        h1 { color: #3b82f6; margin-bottom: 20px; }
-        input { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 16px; outline: none; }
-        .dl-button { display: block; background: #10b981; color: white; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 18px; transition: 0.3s; }
-        .dl-button:active { transform: scale(0.95); }
+        body { background: #0b0f19; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .card { background: #161d2f; padding: 30px; border-radius: 25px; text-align: center; width: 90%; max-width: 380px; border: 1px solid #2e3a59; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { color: #6366f1; font-size: 24px; }
+        input { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; margin: 20px 0; box-sizing: border-box; font-size: 16px; outline: none; }
+        .btn { background: #6366f1; color: white; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; display: block; font-size: 18px; transition: 0.3s; border: none; width: 100%; cursor: pointer; }
+        #status { margin-top: 15px; font-size: 13px; color: #94a3b8; }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>🚀 Insta & YT Pro</h1>
-        <div style="font-size: 30px; margin-bottom: 20px;">
-            <i class="fab fa-instagram" style="color: #e1306c;"></i> 
-            <i class="fab fa-youtube" style="color: #ff0000; margin-left: 15px;"></i>
-        </div>
+        <h1>🚀 Sathish's Server</h1>
+        <p style="opacity:0.6; font-size:12px;">No Ads • High Speed • Unlimited</p>
         
-        <input type="text" id="vUrl" placeholder="Paste video link here..." oninput="update()">
+        <input type="text" id="vUrl" placeholder="Paste link (Insta, YT, FB)...">
         
-        <a href="javascript:void(0)" id="mainBtn" class="dl-button" onclick="validate()">Download Now</a>
+        <button onclick="startDownload()" class="btn">Download Now</button>
         
-        <p id="msg" style="margin-top: 15px; font-size: 12px; opacity: 0.6;">Enter link to start</p>
+        <div id="status">Ready to process link</div>
+        <p style="margin-top: 25px; font-size: 10px; opacity: 0.3;">© 2026 Powered by Sathish Server</p>
     </div>
 
     <script>
-        function update() {
-            let u = document.getElementById('vUrl').value;
-            let btn = document.getElementById('mainBtn');
-            if(u.trim() !== "") {
-                // ఇది SnapInsta సర్వర్ - ఇన్స్టాగ్రామ్ కోసం బెస్ట్
-                btn.href = "https://snapinsta.app/?url=" + encodeURIComponent(u);
-                document.getElementById('msg').innerText = "✅ Server Ready!";
+        function startDownload() {
+            let url = document.getElementById('vUrl').value;
+            let status = document.getElementById('status');
+            
+            if(!url) {
+                alert("Please paste a video link!");
+                return;
             }
-        }
-        function validate() {
-            let u = document.getElementById('vUrl').value;
-            if(!u) { alert("Please paste a link first!"); }
+
+            status.innerText = "⏳ Connecting to Server...";
+            status.style.color = "#6366f1";
+
+            // Cobalt - ఇది ప్రపంచంలోనే బెస్ట్ అడ్వర్టైజ్మెంట్ లేని డౌన్లోడర్ సర్వర్
+            // ఇది ఏ బ్రౌజర్ లో అయినా బ్లాక్ అవ్వకుండా పనిచేస్తుంది
+            let server = "https://cobalt.tools/?url=" + encodeURIComponent(url);
+            
+            // రీడైరెక్ట్ కాకుండా కొత్త ట్యాబ్ లో కాకుండా అదే పేజీలో పక్కాగా లోడ్ చేస్తుంది
+            window.location.href = server;
         }
     </script>
 </body>
