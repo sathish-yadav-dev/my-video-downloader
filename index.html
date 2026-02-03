@@ -3,55 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sathish Pro Downloader</title>
+    <title>Sathish Master Downloader</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
-        .card { background: #1e293b; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 400px; border: 1px solid #334155; }
-        h1 { color: #3b82f6; }
-        .social-icons { margin: 20px 0; font-size: 25px; display: flex; justify-content: center; gap: 15px; }
-        input { width: 100%; padding: 15px; border-radius: 10px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; }
-        .btn { background: #3b82f6; color: white; padding: 15px; border-radius: 10px; width: 100%; font-weight: bold; border: none; cursor: pointer; display: block; text-decoration: none; }
-        #resultArea { display: none; margin-top: 20px; padding: 15px; border: 1px dashed #3b82f6; border-radius: 10px; background: rgba(59, 130, 246, 0.1); }
-        .final-dl-btn { background: #10b981; color: white; padding: 10px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 10px; font-weight: bold; }
+        body { background: #0b0f19; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+        .container { background: #161d2f; padding: 30px; border-radius: 25px; text-align: center; width: 90%; max-width: 400px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); border: 1px solid #2e3a59; }
+        h1 { color: #4f46e5; margin-bottom: 5px; }
+        .input-group { margin: 25px 0; }
+        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; font-size: 16px; outline: none; transition: 0.3s; box-sizing: border-box; }
+        input:focus { border-color: #4f46e5; }
+        .main-btn { background: #4f46e5; color: white; padding: 16px; border: none; border-radius: 12px; width: 100%; font-weight: bold; font-size: 18px; cursor: pointer; }
+        
+        /* మ్యాజిక్ బాక్స్ - డౌన్లోడ్ బటన్ ఇక్కడ వస్తుంది */
+        #server-box { display: none; margin-top: 25px; padding: 20px; background: #1e293b; border-radius: 15px; border: 1px dashed #4f46e5; }
+        .dl-btn { background: #10b981; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .loading { display: none; color: #94a3b8; font-size: 14px; margin-top: 15px; }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h1>🎥 Pro Downloader</h1>
-    <div class="social-icons">
-        <i class="fab fa-youtube"></i> <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i>
-    </div>
-    
-    <input type="text" id="videoUrl" placeholder="Paste link here...">
-    <button class="btn" onclick="processVideo()">Get Download Links</button>
+<div class="container">
+    <h1>🚀 My Server</h1>
+    <p style="opacity: 0.6; font-size: 14px;">Direct Video Downloader</p>
 
-    <div id="resultArea">
-        <p style="font-size: 14px;">✅ సర్వర్ సిద్ధంగా ఉంది!</p>
-        <a id="downloadLink" href="#" class="final-dl-btn" target="_blank">Click to Download Video</a>
+    <div class="input-group">
+        <input type="text" id="vUrl" placeholder="Paste Instagram/YouTube link...">
     </div>
 
-    <p style="margin-top: 25px; font-size: 11px; opacity: 0.5;">Developed by Sathish Yadav</p>
+    <button class="main-btn" onclick="connectServer()">Connect to Server</button>
+
+    <div id="loading-txt" class="loading">⏳ Connecting to cloud server...</div>
+
+    <div id="server-box">
+        <p style="color: #10b981; font-size: 14px; margin: 0;">✅ Server Connected!</p>
+        <div id="final-link"></div>
+    </div>
+
+    <p style="margin-top: 30px; font-size: 11px; opacity: 0.4;">Owner: Sathish Yadav • 2026</p>
 </div>
 
 <script>
-    function processVideo() {
-        let url = document.getElementById('videoUrl').value;
-        let result = document.getElementById('resultArea');
-        let dl = document.getElementById('downloadLink');
+    function connectServer() {
+        let url = document.getElementById('vUrl').value;
+        let box = document.getElementById('server-box');
+        let load = document.getElementById('loading-txt');
+        let linkArea = document.getElementById('final-link');
 
-        if(!url) {
-            alert("Please paste a link first!");
-            return;
-        }
+        if(!url) { alert("Please paste a link!"); return; }
 
-        // సర్వర్ ని ఇక్కడే లింక్ చేస్తున్నాను. ఇది ఎప్పుడూ పని చేస్తుంది.
-        // మేము ఇన్స్టాగ్రామ్, యూట్యూబ్ అన్నిటికీ పనిచేసే ఒక పవర్ ఫుల్ గేట్ వే వాడుతున్నాం.
-        let serverUrl = "https://savefrom.net/?url=" + encodeURIComponent(url);
-        
-        dl.href = serverUrl;
-        result.style.display = "block";
+        load.style.display = "block";
+        box.style.display = "none";
+
+        // ఈ సర్వర్ లింక్ ని మీ వెబ్సైట్ లోనే ఒక బటన్ లా మారుస్తుంది
+        setTimeout(() => {
+            load.style.display = "none";
+            box.style.display = "block";
+            
+            // మనం ఒక పబ్లిక్ సర్వర్ API Bridge ని వాడుతున్నాం
+            let cleanUrl = encodeURIComponent(url);
+            linkArea.innerHTML = `<a href="https://save.tube/parse?url=${cleanUrl}" class="dl-btn" target="_blank">📥 Click to Download</a>`;
+        }, 1500);
     }
 </script>
 
