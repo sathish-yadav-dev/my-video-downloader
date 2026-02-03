@@ -6,19 +6,15 @@
     <title>SATHISH YADAV | Pro Downloader</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0b0f19; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: #161d2f; padding: 35px; border-radius: 25px; text-align: center; width: 88%; max-width: 380px; border: 1px solid #2e3a59; box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
-        
-        .name-badge { font-size: 11px; font-weight: 800; background: #4f46e5; padding: 5px 15px; border-radius: 50px; display: inline-block; margin-bottom: 12px; letter-spacing: 2px; text-transform: uppercase; }
-        .social-icons { font-size: 20px; margin-bottom: 10px; display: flex; justify-content: center; gap: 20px; }
+        body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .card { background: #1e293b; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 380px; border: 1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .name-badge { font-size: 11px; font-weight: bold; background: #4f46e5; padding: 4px 12px; border-radius: 50px; display: inline-block; margin-bottom: 10px; text-transform: uppercase; }
+        .social-icons { font-size: 20px; margin-bottom: 10px; display: flex; justify-content: center; gap: 15px; }
         .fa-instagram { color: #e1306c; } .fa-youtube { color: #ff0000; }
-        .title { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 30px; letter-spacing: 1px; }
-
-        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; margin-bottom: 25px; box-sizing: border-box; font-size: 15px; outline: none; }
-        .main-btn { background: linear-gradient(45deg, #4f46e5, #3b82f6); color: white; padding: 18px; border: none; border-radius: 12px; width: 100%; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3); }
-        .main-btn:active { transform: scale(0.96); }
-        
-        .footer { margin-top: 30px; font-size: 10px; color: #94a3b8; opacity: 0.4; letter-spacing: 1px; }
+        .title { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 25px; }
+        input { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; outline: none; }
+        .btn { background: #4f46e5; color: white; padding: 16px; border: none; border-radius: 10px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; }
+        .footer { margin-top: 25px; font-size: 10px; opacity: 0.4; letter-spacing: 1px; }
     </style>
 </head>
 <body>
@@ -26,31 +22,27 @@
     <div class="card">
         <div class="name-badge">SATHISH YADAV</div>
         <div class="social-icons">
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-youtube"></i>
+            <i class="fab fa-instagram"></i> <i class="fab fa-youtube"></i>
         </div>
         <div class="title">PRO DOWNLOADER</div>
         
-        <input type="text" id="vUrl" placeholder="Paste Video/Audio Link Here...">
+        <input type="text" id="vUrl" placeholder="Paste link here...">
+        <button class="btn" onclick="openServer()">🚀 GENERATE DOWNLOAD LINK</button>
         
-        <button class="main-btn" onclick="startDownload()">
-            <i class="fas fa-download"></i> GET DOWNLOAD OPTIONS
-        </button>
-        
-        <div class="footer">POWERED BY SATHISH SERVER v10.0</div>
+        <div class="footer">SATHISH SERVER v11.0 • AUTO-FETCH</div>
     </div>
 
     <script>
-        function startDownload() {
+        function openServer() {
             let u = document.getElementById('vUrl').value.trim();
-            if(!u) { alert("Please paste a link first!"); return; }
+            if(!u) { alert("Please paste a link!"); return; }
 
-            // ఈ API లింక్ ని డైరెక్ట్ గా సర్వర్ లోకి తీసుకువెళుతుంది
-            // యూజర్ కి ఆడియో, వీడియో ఆప్షన్లు స్పష్టంగా కనిపిస్తాయి
-            let targetUrl = "https://www.y2mate.com/inspect?url=" + encodeURIComponent(u);
+            // ఈ ట్రిక్ ద్వారా యూజర్ మళ్ళీ పేస్ట్ చేయాల్సిన అవసరం ఉండదు
+            // ఇది డైరెక్ట్ గా డౌన్లోడ్ ఆప్షన్ల పేజీకి తీసుకెళ్తుంది
+            let finalUrl = "https://www.y2mate.com/inspect?url=" + encodeURIComponent(u);
             
-            // కొత్త ట్యాబ్ లో కాకుండా అదే పేజీలో నీట్ గా ఓపెన్ అవుతుంది
-            window.location.href = targetUrl;
+            // ఫోన్ లో చాలా స్పీడ్ గా ఓపెన్ అవుతుంది
+            window.location.replace(finalUrl);
         }
     </script>
 
