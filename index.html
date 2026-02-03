@@ -75,18 +75,22 @@
         <div class="footer">SATHISH SERVER v4.0 • FAST & SECURE</div>
     </div>
 
-    <script>
-        function startDownload() {
+     <script>
+        async function startDownload() {
             let u = document.getElementById('vUrl').value.trim();
             if(!u) { alert("Please paste a link first!"); return; }
             
-            /* ముఖ్యమైన మార్పు: 
-               Publer కి వెళ్లేటప్పుడు '?url=' తో పాటు లింక్ ని పంపుతున్నాం.
-               దీనివల్ల పబ్లర్ సైట్ ఓపెన్ అవ్వగానే ఆ లింక్ ని రీడ్ చేసి సేవ్ ఆప్షన్ చూపిస్తుంది.
-            */
-            let finalServer = "https://publer.io/tools/media-downloader?url=" + encodeURIComponent(u);
+            // యూజర్ సౌలభ్యం కోసం బ్యాక్‌గ్రౌండ్‌లో లింక్ కాపీ చేస్తుంది
+            try {
+                await navigator.clipboard.writeText(u);
+            } catch (err) {
+                console.log("Clipboard error");
+            }
+
+            // SaveFrom.net సర్వర్‌ని వాడుతున్నాం, ఇది లింక్‌ని ఆటోమేటిక్‌గా రీడ్ చేస్తుంది
+            let finalServer = "https://savefrom.net/?url=" + encodeURIComponent(u);
             
-            // నేరుగా పబ్లర్ కి డైరెక్ట్ చేస్తుంది
+            // నేరుగా కొత్త పేజీకి రీడైరెక్ట్ చేస్తుంది
             window.location.href = finalServer;
         }
     </script>
