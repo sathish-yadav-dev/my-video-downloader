@@ -3,38 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sathish's Pro Downloader</title>
+    <title>Sathish's Super Downloader</title>
     <style>
-        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 400px; }
-        h1 { font-size: 28px; margin-bottom: 5px; background: linear-gradient(to right, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .icons { font-size: 24px; margin: 15px 0; opacity: 0.8; }
-        input { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #334155; background: #0f172a; color: white; margin: 20px 0; box-sizing: border-box; outline: none; transition: 0.3s; }
-        input:focus { border-color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
-        button { background: #3b82f6; color: white; padding: 15px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; font-size: 16px; transition: 0.3s; }
-        button:hover { background: #2563eb; transform: translateY(-2px); }
-        #status { margin-top: 20px; font-size: 14px; color: #94a3b8; }
+        body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .card { background: #1e293b; padding: 40px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 400px; border: 1px solid #334155; }
+        h1 { background: linear-gradient(to right, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 28px; }
+        input { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #334155; background: #0f172a; color: white; margin: 20px 0; box-sizing: border-box; outline: none; }
+        button { background: #3b82f6; color: white; padding: 15px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; font-size: 16px; }
+        #status { margin-top: 20px; color: #94a3b8; font-size: 14px; }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>🎥 Super Downloader</h1>
-        <div class="icons">📱 🎞️ 📸</div>
-        <p style="font-size: 14px; opacity: 0.8;">Paste Link & Download Instantly</p>
-        <input type="text" id="vUrl" placeholder="Paste video link here...">
-        <button onclick="go()">Download Now</button>
+        <h1>🎥 Downloader</h1>
+        <p>Paste link & hit Download</p>
+        <input type="text" id="vUrl" placeholder="Paste link here...">
+        <button onclick="start()">Download Now</button>
         <div id="status"></div>
-        <p style="margin-top: 25px; font-size: 12px; opacity: 0.5;">Developed by Sathish Yadav</p>
     </div>
     <script>
-        function go() {
-            let u = document.getElementById('vUrl').value;
-            let s = document.getElementById('status');
-            if(!u) { s.innerText = "❌ Please paste a link first!"; return; }
-            s.innerHTML = "🚀 Opening Secure Download Server...";
+        function start() {
+            let url = document.getElementById('vUrl').value;
+            let status = document.getElementById('status');
+            if(!url) { status.innerText = "❌ Please paste a link!"; return; }
+            
+            status.innerHTML = "🚀 Redirecting to Download Server...";
+            
+            // window.open కి బదులు నేరుగా వెళ్ళడానికి ఇది వాడదాం
             setTimeout(() => {
-                window.open("https://savefrom.net/?url=" + encodeURIComponent(u), "_blank");
-            }, 1500);
+                window.location.href = "https://savefrom.net/?url=" + encodeURIComponent(url);
+            }, 1000);
         }
     </script>
 </body>
