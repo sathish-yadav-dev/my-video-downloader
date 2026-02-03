@@ -3,56 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SATHISH YADAV | High Speed</title>
+    <title>SATHISH YADAV | Pro Downloader</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0b0f19; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
-        .card { background: #161d2f; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 380px; border: 1px solid #2e3a59; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-        .name-badge { font-size: 11px; font-weight: 800; background: #4f46e5; padding: 5px 12px; border-radius: 50px; display: inline-block; margin-bottom: 15px; letter-spacing: 2px; }
-        .title { font-size: 22px; font-weight: 900; margin-bottom: 25px; color: #fff; }
-        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 14px; outline: none; }
+        body { background: #0b0f19; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .card { background: #161d2f; padding: 30px; border-radius: 25px; text-align: center; width: 85%; max-width: 380px; border: 1px solid #2e3a59; box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
         
-        /* హై స్పీడ్ బటన్ */
-        .fast-btn { background: linear-gradient(45deg, #00dbde, #fc00ff); color: white; padding: 18px; border: none; border-radius: 15px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; box-shadow: 0 5px 15px rgba(0, 219, 222, 0.4); }
-        .fast-btn:active { transform: scale(0.95); }
+        /* చిన్నగా కానీ హైలైట్ అయ్యే బ్రాండింగ్ */
+        .name-brand { 
+            font-size: 14px; 
+            font-weight: 800; 
+            letter-spacing: 3px; 
+            color: #fff; 
+            background: #4f46e5;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+        }
         
-        #speed-box { display: none; margin-top: 25px; padding: 15px; border-radius: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid #4f46e5; }
-        .download-link { background: #10b981; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; display: block; margin-top: 10px; }
+        .social-icons { font-size: 22px; margin-bottom: 12px; display: flex; justify-content: center; gap: 20px; opacity: 0.9; }
+        .fa-instagram { color: #e1306c; }
+        .fa-youtube { color: #ff0000; }
+        
+        .downloader-text { 
+            font-size: 24px; 
+            font-weight: 900; 
+            color: #4f46e5;
+            margin-bottom: 25px; 
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 15px; outline: none; }
+        
+        .main-btn { 
+            background: linear-gradient(45deg, #4f46e5, #3b82f6); 
+            color: white; 
+            padding: 16px; 
+            border: none; 
+            border-radius: 12px; 
+            width: 100%; 
+            font-weight: bold; 
+            font-size: 16px; 
+            cursor: pointer; 
+            transition: 0.2s; 
+            box-shadow: 0 8px 15px rgba(79, 70, 229, 0.3);
+        }
+        .main-btn:active { transform: scale(0.96); }
+        
+        .footer { margin-top: 25px; font-size: 10px; color: #94a3b8; opacity: 0.4; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <div class="name-badge">SATHISH YADAV PRO</div>
-        <div class="title">HIGH-SPEED SERVER</div>
+        <div class="name-brand">SATHISH YADAV</div>
         
-        <input type="text" id="vLink" placeholder="Paste Video Link Here...">
-        <button class="fast-btn" onclick="fetchInstant()">⚡ INSTANT DOWNLOAD</button>
-
-        <div id="speed-box">
-            <p style="margin:0; font-size:13px; color:#00dbde;">🚀 Link Generated in 0.5s!</p>
-            <div id="btn-here"></div>
+        <div class="social-icons">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
         </div>
-
-        <div style="margin-top:25px; font-size:10px; opacity:0.3;">SUPERFAST CDN • v27.0</div>
+        
+        <div class="downloader-text">PRO DOWNLOADER</div>
+        
+        <input type="text" id="vUrl" placeholder="Paste Video Link Here...">
+        
+        <button class="main-btn" onclick="startDownload()">
+            <i class="fas fa-bolt"></i> DOWNLOAD NOW
+        </button>
+        
+        <div class="footer">SATHISH SERVER v4.0 • FAST & SECURE</div>
     </div>
 
     <script>
-        function fetchInstant() {
-            let u = document.getElementById('vLink').value.trim();
-            if(!u) { alert("Paste a link first!"); return; }
-
-            document.getElementById('speed-box').style.display = "block";
-            let container = document.getElementById('btn-here');
+        function startDownload() {
+            let u = document.getElementById('vUrl').value.trim();
+            if(!u) { alert("Please paste a link first!"); return; }
             
-            // సర్వర్ల జాప్యం లేకుండా నేరుగా ఎక్స్‌ప్రెస్ గేట్‌వే ని వాడుతున్నాం
-            // ఇది లోడ్ అవ్వడానికి అసలు టైమ్ తీసుకోదు
-            let expressUrl = "https://ddownloader.com/api/analyze?url=" + encodeURIComponent(u);
-            
-            // ఈ గేట్‌వే ద్వారా నేరుగా గ్యాలరీ కి సేవ్ అవుతుంది
-            let galleryLink = "https://save-from.net/?url=" + u;
-
-            container.innerHTML = `<a href="${galleryLink}" target="_blank" class="download-link">📥 SAVE TO GALLERY NOW</a>`;
+            // Publer - ఇది చాలా ఫాస్ట్ మరియు క్లీన్ గా ఉంటుంది
+            let finalServer = "https://publer.io/tools/media-downloader?url=" + encodeURIComponent(u);
+            window.location.href = finalServer;
         }
     </script>
 
