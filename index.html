@@ -3,41 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sathish Yadav - Video Downloader</title>
+    <title>Sathish Master Downloader</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; text-align: center; }
-        .card { background: #1e293b; padding: 40px; border-radius: 20px; width: 85%; max-width: 350px; border: 1px solid #334155; }
-        h1 { color: #3b82f6; font-size: 22px; }
-        input { width: 100%; padding: 15px; border-radius: 10px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; }
-        
-        /* ఇది అసలైన మ్యాజిక్ లింక్ */
-        .magic-link {
-            display: block;
-            background: #10b981;
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-        }
+        body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+        .card { background: #1e293b; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 400px; border: 1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { color: #3b82f6; margin-bottom: 10px; }
+        .social-icons { margin: 20px 0; font-size: 25px; display: flex; justify-content: center; gap: 15px; opacity: 0.8; }
+        input { width: 100%; padding: 15px; border-radius: 10px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; outline: none; }
+        .btn { background: #3b82f6; color: white; padding: 15px; border: none; border-radius: 10px; width: 100%; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        .btn:hover { background: #2563eb; }
+        #loader { display: none; margin-top: 20px; }
+        .loader-spin { border: 4px solid #f3f3f3; border-top: 4px solid #3b82f6; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        iframe { width: 100%; height: 50px; border: none; margin-top: 20px; display: none; border-radius: 10px; }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>🎥 Pro Downloader</h1>
-        <p style="font-size: 12px; opacity: 0.6;">Paste link below and click the green button</p>
-        
-        <form action="https://en.savefrom.net/" method="get" target="_self">
-            <input type="text" name="url" placeholder="Paste Video Link Here..." required>
-            <button type="submit" class="magic-link" style="width: 100%; border: none; cursor: pointer;">
-                Download Now
-            </button>
-        </form>
-        
-        <p style="margin-top: 20px; font-size: 10px; opacity: 0.4;">Developed by Sathish Yadav</p>
+<div class="card">
+    <h1>🎥 Pro Downloader</h1>
+    <div class="social-icons">
+        <i class="fab fa-youtube"></i> <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i>
     </div>
+    
+    <input type="text" id="videoUrl" placeholder="Paste link (Insta, YT, FB) here...">
+    <button class="btn" onclick="startDownload()">Generate Download Link</button>
+
+    <div id="loader">
+        <div class="loader-spin"></div>
+        <p style="font-size: 12px; margin-top: 10px;">Finding Video on Server...</p>
+    </div>
+
+    <iframe id="dlFrame"></iframe>
+
+    <p style="margin-top: 25px; font-size: 11px; opacity: 0.5;">Developed by Sathish Yadav • 2026</p>
+</div>
+
+<script>
+    function startDownload() {
+        let url = document.getElementById('videoUrl').value;
+        let loader = document.getElementById('loader');
+        let frame = document.getElementById('dlFrame');
+
+        if(!url) {
+            alert("Please paste a link first!");
+            return;
+        }
+
+        // Loader చూపించు
+        loader.style.display = "block";
+        frame.style.display = "none";
+
+        // మనం ఒక ఫ్రీ API Bridge ని వాడుతున్నాం, ఇది వేరే సైట్ కి వెళ్లకుండా అక్కడే బటన్ ఇస్తుంది
+        // ఇది సర్వర్ లాగా పనిచేస్తుంది
+        setTimeout(() => {
+            loader.style.display = "none";
+            frame.style.display = "block";
+            // ఈ కింద ఉన్నది ఒక పబ్లిక్ డౌన్లోడ్ సర్వర్ ఇంజిన్
+            frame.src = "https://loader.to/api/button/?url=" + encodeURIComponent(url) + "&f=mp4";
+        }, 2000);
+    }
+</script>
 
 </body>
 </html>
