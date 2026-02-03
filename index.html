@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sathish Video Downloader</title>
+    <title>Sathish Pro Downloader</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
         .card { background: #1e293b; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 380px; border: 1px solid #334155; }
-        h1 { color: #3b82f6; }
-        .social-icons { margin: 20px 0; font-size: 30px; display: flex; justify-content: center; gap: 15px; }
+        h1 { color: #3b82f6; margin-bottom: 20px; }
+        .social-icons { margin-bottom: 20px; font-size: 30px; display: flex; justify-content: center; gap: 15px; }
         .fa-youtube { color: #ff0000; } .fa-instagram { color: #e1306c; } .fa-facebook { color: #1877f2; }
         input { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 16px; }
-        .btn { background: #3b82f6; color: white; padding: 15px; border-radius: 10px; border: none; width: 100%; font-weight: bold; font-size: 16px; cursor: pointer; }
+        
+        /* బటన్ స్టైల్ */
+        .btn { 
+            display: inline-block;
+            background: #3b82f6; 
+            color: white; 
+            padding: 15px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
@@ -21,22 +34,34 @@
         <div class="social-icons">
             <i class="fab fa-youtube"></i> <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i>
         </div>
-        <input type="text" id="link" placeholder="Paste video link here...">
-        <button class="btn" onclick="start()">Download Now</button>
-        <p id="msg" style="margin-top:15px; font-size:12px; opacity:0.6;"></p>
+        
+        <input type="text" id="vUrl" placeholder="Paste link here..." oninput="createLink()">
+        
+        <a href="#" id="dlLink" class="btn" onclick="return check()">Download Now</a>
+        
+        <p id="msg" style="margin-top:20px; font-size:12px; opacity:0.6;">Paste link to enable button.</p>
     </div>
 
     <script>
-        function start() {
-            let u = document.getElementById('link').value;
-            if(!u) { alert("Please paste a link!"); return; }
-            
-            document.getElementById('msg').innerText = "🚀 Redirecting...";
-            
-            // ఇది ఏ మొబైల్ బ్రౌజర్ లోనైనా నేరుగా రీడైరెక్ట్ చేస్తుంది
-            window.location.replace("https://savefrom.net/?url=" + encodeURIComponent(u));
+        function createLink() {
+            let url = document.getElementById('vUrl').value;
+            let linkTag = document.getElementById('dlLink');
+            if(url.length > 5) {
+                // బటన్ క్లిక్ చేయకముందే మనం లింక్ ని సిద్ధం చేస్తున్నాం
+                linkTag.href = "https://savefrom.net/?url=" + encodeURIComponent(url);
+                document.getElementById('msg').innerText = "✅ Button Ready! Click to Download.";
+                document.getElementById('msg').style.color = "#10b981";
+            }
+        }
+
+        function check() {
+            let url = document.getElementById('vUrl').value;
+            if(!url) {
+                alert("Please paste a link first!");
+                return false;
+            }
+            return true; 
         }
     </script>
 </body>
 </html>
-
