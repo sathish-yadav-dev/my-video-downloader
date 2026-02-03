@@ -3,20 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Downloader - Sathish</title>
+    <title>Sathish Video Downloader</title>
     <style>
         body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: #1e293b; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 400px; }
-        input { width: 100%; padding: 12px; border-radius: 8px; border: none; margin: 20px 0; box-sizing: border-box; }
-        button { background: #3b82f6; color: white; padding: 12px 30px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; }
+        .card { background: #1e293b; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 400px; }
+        input { width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #334155; background: #0f172a; color: white; margin: 20px 0; box-sizing: border-box; outline: none; }
+        input:focus { border-color: #3b82f6; }
+        button { background: #3b82f6; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; }
+        button:hover { background: #2563eb; }
+        #msg { margin-top: 15px; color: #94a3b8; font-size: 14px; }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>📹 Downloader</h1>
-        <p>Paste link & hit Download</p>
-        <input type="text" placeholder="Paste video link here...">
-        <button onclick="alert('Working on the backend! Site is now LIVE.')">Download</button>
+        <h1>🎥 Video Downloader</h1>
+        <p>Paste YouTube/Instagram link</p>
+        <input type="text" id="url" placeholder="https://...">
+        <button onclick="startDownload()">Download Now</button>
+        <div id="msg"></div>
     </div>
+    <script>
+        function startDownload() {
+            let link = document.getElementById('url').value;
+            let msg = document.getElementById('msg');
+            if(!link) { 
+                msg.innerText = "❌ Please paste a link!"; 
+                return; 
+            }
+            msg.innerText = "⏳ Processing... Redirecting to server.";
+            // This connects your site to a working download service
+            setTimeout(() => {
+                window.open("https://savefrom.net/?url=" + encodeURIComponent(link), "_blank");
+                msg.innerText = "✅ Done! Check the new tab.";
+            }, 2000);
+        }
+    </script>
 </body>
 </html>
