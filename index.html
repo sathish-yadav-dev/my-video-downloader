@@ -3,27 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sathish Pro Downloader</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Sathish Yadav - Video Downloader</title>
     <style>
-        body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: #1e293b; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 380px; border: 1px solid #334155; }
-        h1 { color: #3b82f6; }
-        .social-icons { margin: 20px 0; font-size: 30px; display: flex; justify-content: center; gap: 15px; }
-        .fa-youtube { color: #ff0000; } .fa-instagram { color: #e1306c; } .fa-facebook { color: #1877f2; }
-        input { width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 16px; outline: none; }
+        body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; text-align: center; }
+        .card { background: #1e293b; padding: 40px; border-radius: 20px; width: 85%; max-width: 350px; border: 1px solid #334155; }
+        h1 { color: #3b82f6; font-size: 22px; }
+        input { width: 100%; padding: 15px; border-radius: 10px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; }
         
-        /* మ్యాజిక్ లింక్ స్టైల్ - ఇది బటన్ లా కనిపిస్తుంది */
-        #goBtn {
-            display: none; /* మొదట ఇది కనిపించదు */
+        /* ఇది అసలైన మ్యాజిక్ లింక్ */
+        .magic-link {
+            display: block;
             background: #10b981;
             color: white;
-            padding: 16px;
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
             font-size: 18px;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
         }
     </style>
 </head>
@@ -31,36 +27,17 @@
 
     <div class="card">
         <h1>🎥 Pro Downloader</h1>
-        <div class="social-icons">
-            <i class="fab fa-youtube"></i> <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i>
-        </div>
+        <p style="font-size: 12px; opacity: 0.6;">Paste link below and click the green button</p>
         
-        <input type="text" id="vUrl" placeholder="Paste video link here..." oninput="update()">
+        <form action="https://en.savefrom.net/" method="get" target="_self">
+            <input type="text" name="url" placeholder="Paste Video Link Here..." required>
+            <button type="submit" class="magic-link" style="width: 100%; border: none; cursor: pointer;">
+                Download Now
+            </button>
+        </form>
         
-        <p id="hint" style="font-size: 13px; opacity: 0.6;">Paste a link above to see the download button.</p>
-        
-        <a href="#" id="goBtn">Download Now</a>
-        
-        <p style="margin-top: 25px; font-size: 11px; opacity: 0.4;">© 2026 Developed by Sathish Yadav</p>
+        <p style="margin-top: 20px; font-size: 10px; opacity: 0.4;">Developed by Sathish Yadav</p>
     </div>
-
-    <script>
-        function update() {
-            let u = document.getElementById('vUrl').value;
-            let btn = document.getElementById('goBtn');
-            let hint = document.getElementById('hint');
-            
-            if(u.length > 5) {
-                hint.style.display = "none";
-                btn.style.display = "block";
-                // లింక్ ని ఇక్కడ అటాచ్ చేస్తున్నాం
-                btn.href = "https://savefrom.net/?url=" + encodeURIComponent(u);
-            } else {
-                hint.style.display = "block";
-                btn.style.display = "none";
-            }
-        }
-    </script>
 
 </body>
 </html>
