@@ -3,63 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SATHISH YADAV | Private Server</title>
+    <title>SATHISH YADAV | Ultimate Downloader</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #050a18; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
-        .card { background: #111827; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 380px; border: 1px solid #1f2937; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-        .badge { font-size: 10px; background: #4f46e5; padding: 4px 12px; border-radius: 50px; display: inline-block; margin-bottom: 15px; letter-spacing: 2px; font-weight: 800; }
-        .title { font-size: 22px; font-weight: 900; margin-bottom: 25px; color: #fff; }
-        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #374151; background: #030712; color: white; margin-bottom: 20px; box-sizing: border-box; outline: none; }
-        .btn { background: #4f46e5; color: white; padding: 16px; border: none; border-radius: 12px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; }
+        body { background: #0b0f19; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; overflow-x: hidden; }
+        .card { background: #161d2f; padding: 25px; border-radius: 20px; text-align: center; width: 95%; max-width: 400px; border: 1px solid #2e3a59; }
+        .badge { font-size: 10px; background: #4f46e5; padding: 4px 12px; border-radius: 50px; display: inline-block; margin-bottom: 10px; letter-spacing: 2px; }
+        .title { font-size: 20px; font-weight: 900; margin-bottom: 20px; color: #fff; }
         
-        /* గ్యాలరీ కి పంపే ప్రైవేట్ సెక్షన్ */
-        #gallery-box { display: none; margin-top: 25px; padding: 20px; background: rgba(16, 185, 129, 0.1); border: 1px dashed #10b981; border-radius: 15px; }
-        .save-btn { display: block; background: #10b981; color: white; padding: 14px; border-radius: 10px; text-decoration: none; font-weight: bold; margin-top: 15px; font-size: 14px; }
+        /* మ్యాజిక్ ఇక్కడే ఉంది */
+        #server-container { display: none; margin-top: 20px; width: 100%; height: 500px; border-radius: 15px; overflow: hidden; border: 2px solid #4f46e5; background: white; }
+        iframe { width: 100%; height: 100%; border: none; }
+
+        .btn { background: #4f46e5; color: white; padding: 15px; border: none; border-radius: 12px; width: 100%; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
     </style>
 </head>
 <body>
 
     <div class="card">
         <div class="badge">SATHISH YADAV PRO</div>
-        <div class="title">PRIVATE SERVER</div>
+        <div class="title">ULTIMATE SERVER v25.0</div>
         
-        <input type="text" id="vUrl" placeholder="Paste Video Link Here...">
-        <button class="btn" onclick="startServer()">⚡ START PRIVATE FETCH</button>
+        <p style="font-size: 12px; color: #94a3b8; margin-bottom: 20px;">
+            ఏ వెబ్‌సైట్ కి వెళ్లకుండా ఇక్కడే డౌన్‌లోడ్ చేసుకోండి.
+        </p>
 
-        <div id="gallery-box">
-            <p style="color:#10b981; font-weight:bold; margin:0;">✅ SERVER CONNECTED!</p>
-            <p style="font-size:12px; margin:5px 0; opacity:0.8;">మీ వీడియో డౌన్లోడ్ అవ్వడానికి సిద్ధంగా ఉంది.</p>
-            <div id="dl-container"></div>
+        <button class="btn" onclick="activateServer()">
+            <i class="fas fa-plug"></i> ACTIVATE PRIVATE SERVER
+        </button>
+
+        <div id="server-container">
+            <iframe id="dlFrame" src=""></iframe>
         </div>
 
-        <div style="margin-top:30px; font-size:9px; opacity:0.3;">SATHISH SECURE BYPASS • v24.0</div>
+        <div style="margin-top:20px; font-size:9px; opacity:0.3;">NO REDIRECTS • DIRECT GALLERY SAVE</div>
     </div>
 
     <script>
-        function startServer() {
-            let u = document.getElementById('vUrl').value.trim();
-            if(!u) { alert("Please paste a link!"); return; }
-
-            document.getElementById('gallery-box').style.display = "block";
-            let container = document.getElementById('dl-container');
-            container.innerHTML = "<p style='font-size:12px;'><i class='fas fa-spinner fa-spin'></i> Bypassing Instagram Security...</p>";
-
-            // ఇది ఏ వెబ్సైట్ కి వెళ్లకుండా నేరుగా 'Universal Bypass' ట్రిక్ వాడుతుంది
-            setTimeout(() => {
-                // ఇది మన ప్రైవేట్ డౌన్లోడ్ గేట్వే
-                let finalLink = "https://www.instafollowers.co/instagram-video-download/process?url=" + encodeURIComponent(u);
-                
-                // ఒకవేళ YouTube అయితే వేరే గేట్వే
-                if(u.includes("youtube") || u.includes("youtu.be")) {
-                    finalLink = "https://y2mate.is/analyze?url=" + encodeURIComponent(u);
-                }
-
-                container.innerHTML = `
-                    <a href="${finalLink}" target="_blank" class="save-btn">📥 DOWNLOAD VIDEO</a>
-                    <a href="${finalLink}" target="_blank" class="save-btn" style="background:#8b5cf6;">🎵 DOWNLOAD AUDIO</a>
-                `;
-            }, 1500);
+        function activateServer() {
+            const container = document.getElementById('server-container');
+            const frame = document.getElementById('dlFrame');
+            
+            // SnapInsta అఫీషియల్ ఇంజిన్ ని నీ సైట్ లోకి లోడ్ చేస్తున్నాను
+            frame.src = "https://snapinsta.app/#download";
+            container.style.display = "block";
+            
+            // బటన్ ని హైడ్ చేస్తున్నాను
+            document.querySelector('.btn').style.display = "none";
         }
     </script>
 
