@@ -6,14 +6,14 @@
     <title>SATHISH YADAV | Pro Saver</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0b0f19; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
+        body { background: #0b0f19; color: white; font-family: sans-serif; text-align: center; padding: 20px; margin: 0; }
         .card { background: #161d2f; padding: 25px; border-radius: 20px; max-width: 400px; margin: auto; border: 1px solid #2e3a59; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .badge { font-size: 10px; background: #4f46e5; padding: 5px 15px; border-radius: 50px; display: inline-block; margin-bottom: 15px; letter-spacing: 2px; }
+        .badge { font-size: 10px; background: #4f46e5; padding: 5px 15px; border-radius: 50px; display: inline-block; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase; }
         input { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; outline: none; }
         .gen-btn { background: #4f46e5; color: white; padding: 15px; border: none; border-radius: 12px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.3s; }
         
         /* Publer ని నీ సైట్ లోకి తెచ్చే విండో */
-        #frame-container { display: none; margin-top: 20px; width: 100%; height: 600px; border-radius: 15px; overflow: hidden; border: 2px solid #4f46e5; background: white; }
+        #frame-container { display: none; margin-top: 20px; width: 100%; height: 550px; border-radius: 15px; overflow: hidden; border: 2px solid #4f46e5; background: white; }
         iframe { width: 100%; height: 100%; border: none; }
     </style>
 </head>
@@ -21,16 +21,16 @@
 
     <div class="card">
         <div class="badge">SATHISH YADAV DEV</div>
-        <h2 style="margin: 0 0 20px 0;">INSTA SAVER v29.0</h2>
+        <h2 style="margin: 0 0 20px 0; font-weight: 900;">INSTA SAVER v30.0</h2>
         
         <input type="text" id="vUrl" placeholder="Paste Instagram Link Here...">
-        <button class="gen-btn" onclick="loadEngine()">🚀 GENERATE DOWNLOAD</button>
+        <button class="gen-btn" onclick="loadEngine()">🚀 START DOWNLOAD</button>
 
         <div id="frame-container">
-            <iframe id="publerFrame" src=""></iframe>
+            <iframe id="publerFrame" src="" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <p style="font-size: 10px; opacity: 0.4; margin-top: 20px;">SAFE • SECURE • NO REDIRECTS</p>
+        <p style="font-size: 10px; opacity: 0.4; margin-top: 20px;">SAFE • SECURE • BYPASS ENGINE</p>
     </div>
 
     <script>
@@ -40,14 +40,21 @@
 
             const container = document.getElementById('frame-container');
             const frame = document.getElementById('publerFrame');
+            const btn = document.querySelector('.gen-btn');
             
-            // నీ స్క్రీన్ షాట్ లో ఉన్న ఆ సర్వర్ ని నీ సైట్ లోకి లోడ్ చేస్తున్నాను
+            // నీ స్క్రీన్ షాట్ లో పనిచేసిన ఆ 'Publer' సర్వర్ ని ఇక్కడ వాడుతున్నాం
             // దీనివల్ల 403 Forbidden ఎర్రర్ రాదు
             frame.src = "https://publer.io/tools/media-downloader?url=" + encodeURIComponent(u);
             container.style.display = "block";
             
-            // బటన్ హైడ్ చేయి
-            document.querySelector('.gen-btn').innerHTML = "RE-GENERATE LINK";
+            btn.innerHTML = "FETCHING VIDEO...";
+            btn.style.background = "#1e293b";
+            
+            // ఒకవేళ ఐఫ్రేమ్ లోడ్ అవ్వకపోతే యూజర్ కి గైడెన్స్ ఇస్తుంది
+            frame.onerror = function() {
+                alert("Server busy, retrying...");
+                location.reload();
+            };
         }
     </script>
 
