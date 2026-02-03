@@ -6,55 +6,45 @@
     <title>SATHISH YADAV | Pro Downloader</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0b0f19; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: #161d2f; padding: 30px; border-radius: 25px; text-align: center; width: 85%; max-width: 380px; border: 1px solid #2e3a59; box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
+        body { background: #0f172a; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .card { background: #1e293b; padding: 30px; border-radius: 25px; text-align: center; width: 85%; max-width: 380px; border: 1px solid #334155; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         
-        /* చిన్నగా కానీ హైలైట్ అయ్యే బ్రాండింగ్ */
+        /* చిన్నగా మరియు హైలైట్ అయ్యే బ్రాండింగ్ */
         .name-brand { 
-            font-size: 14px; 
+            font-size: 13px; 
             font-weight: 800; 
-            letter-spacing: 3px; 
+            letter-spacing: 2px; 
             color: #fff; 
-            background: #4f46e5;
+            background: linear-gradient(45deg, #4f46e5, #3b82f6);
             display: inline-block;
-            padding: 4px 12px;
+            padding: 5px 15px;
             border-radius: 50px;
             margin-bottom: 15px;
             text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
         }
         
-        .social-icons { font-size: 22px; margin-bottom: 12px; display: flex; justify-content: center; gap: 20px; opacity: 0.9; }
+        .social-icons { font-size: 22px; margin-bottom: 12px; display: flex; justify-content: center; gap: 20px; }
         .fa-instagram { color: #e1306c; }
         .fa-youtube { color: #ff0000; }
         
-        .downloader-text { 
-            font-size: 24px; 
-            font-weight: 900; 
-            color: #4f46e5;
-            margin-bottom: 25px; 
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+        .downloader-text { font-size: 22px; font-weight: 900; color: #818cf8; margin-bottom: 25px; }
 
-        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 15px; outline: none; }
+        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 15px; outline: none; }
         
         .main-btn { 
-            background: linear-gradient(45deg, #4f46e5, #3b82f6); 
+            background: #4f46e5; 
             color: white; 
             padding: 16px; 
             border: none; 
             border-radius: 12px; 
             width: 100%; 
             font-weight: bold; 
-            font-size: 16px; 
-            cursor: pointer; 
-            transition: 0.2s; 
-            box-shadow: 0 8px 15px rgba(79, 70, 229, 0.3);
+            font-size: 17px; 
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
         }
-        .main-btn:active { transform: scale(0.96); }
-        
-        .footer { margin-top: 25px; font-size: 10px; color: #94a3b8; opacity: 0.4; letter-spacing: 1px; }
+        .main-btn:active { transform: scale(0.95); }
+        .footer { margin-top: 25px; font-size: 10px; color: #94a3b8; opacity: 0.5; }
     </style>
 </head>
 <body>
@@ -69,23 +59,23 @@
         
         <div class="downloader-text">PRO DOWNLOADER</div>
         
-        <input type="text" id="vUrl" placeholder="Paste Video Link Here...">
+        <input type="text" id="videoUrl" placeholder="Paste link here...">
         
-        <button class="main-btn" onclick="startDownload()">
-            <i class="fas fa-bolt"></i> DOWNLOAD NOW
+        <button class="main-btn" onclick="transferLink()">
+            <i class="fas fa-bolt"></i> GET DOWNLOAD LINK
         </button>
         
-        <div class="footer">SATHISH SERVER v4.0 • FAST & SECURE</div>
+        <div class="footer">SATHISH SERVER v5.0 • NO RE-PASTE</div>
     </div>
 
     <script>
-        function startDownload() {
-            let u = document.getElementById('vUrl').value.trim();
+        function transferLink() {
+            let u = document.getElementById('videoUrl').value.trim();
             if(!u) { alert("Please paste a link first!"); return; }
             
-            // Publer - ఇది చాలా ఫాస్ట్ మరియు క్లీన్ గా ఉంటుంది
-            let finalServer = "https://publer.io/tools/media-downloader?url=" + encodeURIComponent(u);
-            window.location.href = finalServer;
+            // SaveFrom మ్యాజిక్ ట్రిక్ - ఇది యూజర్ పేస్ట్ చేయకుండానే లింక్ ని రీడ్ చేస్తుంది
+            let sUrl = "https://savefrom.net/?url=" + encodeURIComponent(u);
+            window.location.href = sUrl;
         }
     </script>
 
