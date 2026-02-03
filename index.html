@@ -6,45 +6,30 @@
     <title>Sathish Pro Downloader</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0f172a; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
         .card { background: #1e293b; padding: 30px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 400px; border: 1px solid #334155; }
-        
-        h1 { margin-bottom: 10px; font-size: 26px; background: linear-gradient(to right, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* లోగోల స్టైల్ */
+        h1 { margin-bottom: 10px; font-size: 26px; color: #3b82f6; }
         .social-icons { margin: 20px 0; display: flex; justify-content: center; gap: 20px; font-size: 30px; }
         .fa-youtube { color: #FF0000; }
         .fa-instagram { color: #E1306C; }
         .fa-facebook { color: #1877F2; }
-
-        input { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; outline: none; font-size: 14px; }
-        input:focus { border-color: #3b82f6; }
-        
+        input { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; outline: none; }
         button { background: #3b82f6; color: white; padding: 15px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; font-size: 16px; transition: 0.3s; }
-        button:hover { background: #2563eb; transform: translateY(-2px); }
-        
-        #status { margin-top: 20px; color: #10b981; font-size: 14px; min-height: 20px; }
-        .footer { margin-top: 25px; font-size: 12px; opacity: 0.5; }
+        button:hover { background: #2563eb; }
+        #status { margin-top: 20px; color: #10b981; font-weight: bold; }
     </style>
 </head>
 <body>
-
     <div class="card">
         <h1>🎥 Pro Downloader</h1>
-        <p style="opacity: 0.8; font-size: 14px;">Download videos from</p>
-        
         <div class="social-icons">
             <i class="fab fa-youtube"></i>
             <i class="fab fa-instagram"></i>
             <i class="fab fa-facebook"></i>
         </div>
-
         <input type="text" id="vUrl" placeholder="Paste video link here...">
         <button onclick="startDownload()">Download Now</button>
-        
         <div id="status"></div>
-        
-        <div class="footer">Developed by Sathish Yadav</div>
     </div>
 
     <script>
@@ -53,18 +38,20 @@
             const status = document.getElementById('status');
             
             if(!url) {
-                alert("Please paste a video link first!");
+                alert("Please paste a link!");
                 return;
             }
 
-            status.innerHTML = "🚀 Connecting to secure server...";
+            status.innerHTML = "🚀 Fetching video details...";
 
-            // Redirecting directly to avoid about:blank issue
+            // Method 2: Using bitly to bypass browser restrictions
+            // Or redirecting to a more mobile-friendly server
+            const finalUrl = "https://9nana.com/en/search?url=" + encodeURIComponent(url);
+            
             setTimeout(() => {
-                window.location.href = "https://savefrom.net/?url=" + encodeURIComponent(url);
+                window.location.href = finalUrl;
             }, 1000);
         }
     </script>
-
 </body>
 </html>
