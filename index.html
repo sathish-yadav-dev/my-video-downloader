@@ -3,60 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sathish Yadav - Video Downloader</title>
+    <title>Sathish Pro Downloader</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0f172a; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: #1e293b; padding: 35px; border-radius: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 400px; border: 1px solid #334155; }
-        h1 { margin-bottom: 5px; color: #3b82f6; font-size: 24px; }
-        .social-icons { margin: 20px 0; display: flex; justify-content: center; gap: 20px; font-size: 32px; }
-        .fa-youtube { color: #FF0000; }
-        .fa-instagram { color: #E1306C; }
-        .fa-facebook { color: #1877F2; }
-        input { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; outline: none; font-size: 14px; }
-        .btn { background: #3b82f6; color: white; padding: 15px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; font-size: 16px; text-decoration: none; display: inline-block; transition: 0.3s; }
-        .btn:hover { background: #2563eb; }
-        #msg { margin-top: 15px; font-size: 13px; color: #94a3b8; }
+        body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .card { background: #1e293b; padding: 30px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 380px; border: 1px solid #334155; }
+        h1 { color: #3b82f6; margin-bottom: 10px; }
+        .social-icons { margin-bottom: 20px; font-size: 30px; display: flex; justify-content: center; gap: 15px; }
+        .fa-youtube { color: #ff0000; } .fa-instagram { color: #e1306c; } .fa-facebook { color: #1877f2; }
+        input { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; }
+        /* ఇక్కడ బటన్ ని నేరుగా లింక్ లాగా మార్చాను */
+        .dl-link { display: block; background: #3b82f6; color: white; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px; }
     </style>
 </head>
 <body>
     <div class="card">
         <h1>🎥 Pro Downloader</h1>
-        <p style="opacity: 0.7; font-size: 14px;">YouTube • Instagram • Facebook</p>
-        
         <div class="social-icons">
-            <i class="fab fa-youtube"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-facebook"></i>
+            <i class="fab fa-youtube"></i> <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i>
         </div>
-
-        <input type="text" id="vUrl" placeholder="Paste link here..." oninput="updateLink()">
-        
-        <a href="#" id="dlBtn" class="btn" target="_blank" onclick="return checkUrl()">Download Now</a>
-        
-        <div id="msg">Copy video link and paste it above.</div>
-        <p style="margin-top: 25px; font-size: 11px; opacity: 0.4;">© 2026 Developed by Sathish Yadav</p>
+        <input type="text" id="vUrl" placeholder="Paste link here..." oninput="setLink()">
+        <a href="#" id="finalBtn" class="dl-link" target="_blank" onclick="return check()">Download Now</a>
+        <p id="st" style="margin-top:15px; font-size:12px; color:#94a3b8;"></p>
     </div>
-
     <script>
-        function updateLink() {
-            let val = document.getElementById('vUrl').value;
-            let btn = document.getElementById('dlBtn');
-            if(val) {
-                // నేరుగా లింక్ ని అప్‌డేట్ చేస్తున్నాను
-                btn.href = "https://savefrom.net/?url=" + encodeURIComponent(val);
+        function setLink() {
+            let u = document.getElementById('vUrl').value;
+            let btn = document.getElementById('finalBtn');
+            if(u) {
+                // బటన్ క్లిక్ చేయకముందే లింక్ ని సిద్ధం చేస్తున్నాను
+                btn.href = "https://savefrom.net/?url=" + encodeURIComponent(u);
             }
         }
-
-        function checkUrl() {
-            let val = document.getElementById('vUrl').value;
-            if(!val) {
-                alert("Please paste a link first!");
-                return false;
-            }
-            document.getElementById('msg').innerText = "🚀 Opening download page...";
+        function check() {
+            let u = document.getElementById('vUrl').value;
+            if(!u) { alert("Please paste a link!"); return false; }
+            document.getElementById('st').innerText = "🚀 Redirecting to Server...";
             return true;
         }
     </script>
 </body>
-</html>
+</html>out
