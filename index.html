@@ -84,8 +84,7 @@
         
         // Publer మెయిన్ పేజీని ఓపెన్ చేస్తుంది
         // 'noreferrer' వాడటం వల్ల బ్లాక్ అయ్యే ఛాన్స్ ఉండదు
-        let finalServer = "https://publer.io/tools/media-downloader";
-        
+        let finalServer = "https://publer.io/tools/media-downloader?url=" + encodeURIComponent(u);
         // ఇది కొత్త ట్యాబ్‌లో ఓపెన్ అవుతుంది, కాబట్టి నీ సైట్ అలాగే ఉంటుంది
         const newTab = window.open(finalServer, '_blank');
         newTab.opener = null; 
