@@ -6,76 +6,56 @@
     <title>SATHISH YADAV | Pro Downloader</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0f172a; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: #1e293b; padding: 30px; border-radius: 25px; text-align: center; width: 85%; max-width: 380px; border: 1px solid #334155; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        body { background: #0b0f19; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .card { background: #161d2f; padding: 30px; border-radius: 25px; text-align: center; width: 85%; max-width: 380px; border: 1px solid #2e3a59; box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
         
-        /* చిన్నగా మరియు హైలైట్ అయ్యే బ్రాండింగ్ */
-        .name-brand { 
-            font-size: 13px; 
-            font-weight: 800; 
-            letter-spacing: 2px; 
-            color: #fff; 
-            background: linear-gradient(45deg, #4f46e5, #3b82f6);
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 50px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-        
+        .name-brand { font-size: 13px; font-weight: 800; letter-spacing: 2px; color: #fff; background: #4f46e5; display: inline-block; padding: 5px 15px; border-radius: 50px; margin-bottom: 15px; text-transform: uppercase; }
         .social-icons { font-size: 22px; margin-bottom: 12px; display: flex; justify-content: center; gap: 20px; }
-        .fa-instagram { color: #e1306c; }
-        .fa-youtube { color: #ff0000; }
-        
+        .fa-instagram { color: #e1306c; } .fa-youtube { color: #ff0000; }
         .downloader-text { font-size: 22px; font-weight: 900; color: #818cf8; margin-bottom: 25px; }
 
-        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 15px; outline: none; }
+        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 15px; outline: none; }
+        .main-btn { background: #4f46e5; color: white; padding: 16px; border: none; border-radius: 12px; width: 100%; font-weight: bold; font-size: 17px; cursor: pointer; }
         
-        .main-btn { 
-            background: #4f46e5; 
-            color: white; 
-            padding: 16px; 
-            border: none; 
-            border-radius: 12px; 
-            width: 100%; 
-            font-weight: bold; 
-            font-size: 17px; 
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
-        }
-        .main-btn:active { transform: scale(0.95); }
-        .footer { margin-top: 25px; font-size: 10px; color: #94a3b8; opacity: 0.5; }
+        /* ఫలితం చూపించే బాక్స్ */
+        #result-box { display: none; margin-top: 20px; padding: 15px; background: #1e293b; border-radius: 15px; border: 1px dashed #4f46e5; }
+        .dl-final { background: #10b981; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 10px; }
     </style>
 </head>
 <body>
 
     <div class="card">
         <div class="name-brand">SATHISH YADAV</div>
-        
         <div class="social-icons">
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-youtube"></i>
+            <i class="fab fa-instagram"></i> <i class="fab fa-youtube"></i>
         </div>
-        
         <div class="downloader-text">PRO DOWNLOADER</div>
         
-        <input type="text" id="videoUrl" placeholder="Paste link here...">
-        
-        <button class="main-btn" onclick="transferLink()">
-            <i class="fas fa-bolt"></i> GET DOWNLOAD LINK
-        </button>
-        
-        <div class="footer">SATHISH SERVER v5.0 • NO RE-PASTE</div>
+        <input type="text" id="vUrl" placeholder="Paste link here...">
+        <button class="main-btn" onclick="fetchVideo()">GENERATE LINK</button>
+
+        <div id="result-box">
+            <p style="font-size: 14px; margin: 0;">✅ Video Found!</p>
+            <div id="download-area"></div>
+        </div>
+
+        <div class="footer" style="margin-top:20px; font-size:10px; opacity:0.4;">SATHISH SERVER v6.0</div>
     </div>
 
     <script>
-        function transferLink() {
-            let u = document.getElementById('videoUrl').value.trim();
-            if(!u) { alert("Please paste a link first!"); return; }
+        function fetchVideo() {
+            let u = document.getElementById('vUrl').value.trim();
+            if(!u) { alert("Please paste a link!"); return; }
             
-            // SaveFrom మ్యాజిక్ ట్రిక్ - ఇది యూజర్ పేస్ట్ చేయకుండానే లింక్ ని రీడ్ చేస్తుంది
-            let sUrl = "https://savefrom.net/?url=" + encodeURIComponent(u);
-            window.location.href = sUrl;
+            let resBox = document.getElementById('result-box');
+            let dlArea = document.getElementById('download-area');
+            
+            resBox.style.display = "block";
+            dlArea.innerHTML = "<p style='font-size:12px;'>Processing... Please Wait</p>";
+
+            // ఇది మీ సైట్ లోనే డౌన్లోడ్ బటన్ ని చూపిస్తుంది, బయటి సైట్ కి వెళ్లదు
+            let apiUrl = "https://loader.to/api/button/?url=" + encodeURIComponent(u) + "&f=mp4";
+            dlArea.innerHTML = `<iframe src="${apiUrl}" style="width:100%; height:60px; border:none; overflow:hidden;"></iframe>`;
         }
     </script>
 
