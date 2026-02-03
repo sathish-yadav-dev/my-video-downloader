@@ -3,126 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sathish Yadav - Pro Downloader</title>
+    <title>SATHISH YADAV | Pro Downloader</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            background-color: #0f172a;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .header {
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-        }
-        .container {
-            background: #1e293b;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            width: 90%;
-            max-width: 500px;
-            margin-bottom: 20px;
-        }
-        .brand-name {
-            background: #4f46e5;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        h1 { color: #818cf8; margin: 10px 0; font-size: 24px; }
-        input {
-            width: 100%;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 10px;
-            border: 2px solid #334155;
-            background: #0f172a;
-            color: white;
-            box-sizing: border-box;
-            outline: none;
-        }
-        input:focus { border-color: #818cf8; }
-        button {
-            width: 100%;
-            padding: 15px;
-            border-radius: 10px;
-            border: none;
-            background: linear-gradient(135deg, #6366f1, #4f46e5);
-            color: white;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4); }
+        body { background: #0b0f19; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .card { background: #161d2f; padding: 30px; border-radius: 25px; text-align: center; width: 85%; max-width: 380px; border: 1px solid #2e3a59; box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
         
-        /* Iframe styling */
-        #downloadArea {
-            display: none;
-            width: 95%;
-            max-width: 800px;
-            height: 600px;
-            border: 2px solid #334155;
-            border-radius: 15px;
-            overflow: hidden;
-            background: white;
-            margin-top: 20px;
+        .name-brand { 
+            font-size: 14px; 
+            font-weight: 800; 
+            letter-spacing: 3px; 
+            color: #fff; 
+            background: #4f46e5;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
         }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        
+        .social-icons { font-size: 22px; margin-bottom: 12px; display: flex; justify-content: center; gap: 20px; opacity: 0.9; }
+        .fa-instagram { color: #e1306c; }
+        .fa-youtube { color: #ff0000; }
+        
+        .downloader-text { 
+            font-size: 24px; 
+            font-weight: 900; 
+            color: #4f46e5;
+            margin-bottom: 25px; 
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
+
+        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 15px; outline: none; }
+        
+        .main-btn { 
+            background: linear-gradient(45deg, #4f46e5, #3b82f6); 
+            color: white; 
+            padding: 16px; 
+            border: none; 
+            border-radius: 12px; 
+            width: 100%; 
+            font-weight: bold; 
+            font-size: 16px; 
+            cursor: pointer; 
+            transition: 0.2s; 
+        }
+        .main-btn:active { transform: scale(0.96); }
+        
+        .footer { margin-top: 25px; font-size: 10px; color: #94a3b8; opacity: 0.4; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="brand-name">SATHISH YADAV</div>
-        <h1>PRO DOWNLOADER</h1>
-    </div>
-
-    <div class="container" id="mainInput">
-        <input type="text" id="vUrl" placeholder="Paste Video Link Here...">
-        <button onclick="processDownload()">⚡ DOWNLOAD NOW</button>
-        <p style="font-size: 12px; color: #94a3b8; margin-top: 15px;">SATHISH SERVER v4.0 • FAST & SECURE</p>
-    </div>
-
-    <div id="downloadArea">
-        <div style="background: #1e293b; padding: 10px; text-align: center; border-bottom: 1px solid #334155;">
-            <span style="color: #818cf8; font-weight: bold;">SATHISH YADAV - Processing Your Video...</span>
+    <div class="card">
+        <div class="name-brand">SATHISH YADAV</div>
+        
+        <div class="social-icons">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
         </div>
-        <iframe id="dlFrame" src=""></iframe>
+        
+        <div class="downloader-text">PRO DOWNLOADER</div>
+        
+        <input type="text" id="vUrl" placeholder="Paste Video Link Here...">
+        
+        <button class="main-btn" onclick="startDownload()">
+            <i class="fas fa-bolt"></i> DOWNLOAD NOW
+        </button>
+        
+        <div class="footer">SATHISH SERVER v4.0 • FAST & SECURE</div>
     </div>
 
     <script>
-        function processDownload() {
-            const u = document.getElementById('vUrl').value.trim();
-            if (!u) {
-                alert("Please paste a link first!");
-                return;
-            }
-
-            // పబ్లర్ కి లింక్ ని పారామీటర్ గా పంపుతున్నాం
-            const finalServer = "https://publer.io/tools/media-downloader?url=" + encodeURIComponent(u);
+        function startDownload() {
+            let u = document.getElementById('vUrl').value.trim();
+            if(!u) { alert("Please paste a link first!"); return; }
             
-            // UI మార్పులు
-            document.getElementById('downloadArea').style.display = 'block';
-            document.getElementById('dlFrame').src = finalServer;
+            /* ముఖ్యమైన మార్పు: 
+               Publer కి వెళ్లేటప్పుడు '?url=' తో పాటు లింక్ ని పంపుతున్నాం.
+               దీనివల్ల పబ్లర్ సైట్ ఓపెన్ అవ్వగానే ఆ లింక్ ని రీడ్ చేసి సేవ్ ఆప్షన్ చూపిస్తుంది.
+            */
+            let finalServer = "https://publer.io/tools/media-downloader?url=" + encodeURIComponent(u);
             
-            // ఆటోమేటిక్ గా కిందికి స్క్రోల్ చేస్తుంది
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            // నేరుగా పబ్లర్ కి డైరెక్ట్ చేస్తుంది
+            window.location.href = finalServer;
         }
     </script>
+
 </body>
 </html>
