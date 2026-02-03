@@ -9,19 +9,18 @@
         body { background: #0f172a; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
         .card { background: #1e293b; padding: 35px; border-radius: 25px; text-align: center; width: 88%; max-width: 400px; box-shadow: 0 25px 60px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); }
         
-        .name-badge { font-size: 11px; font-weight: 800; background: linear-gradient(45deg, #6366f1, #a855f7); padding: 6px 16px; border-radius: 50px; display: inline-block; margin-bottom: 15px; letter-spacing: 2px; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4); }
-        .social-icons { font-size: 22px; margin-bottom: 10px; display: flex; justify-content: center; gap: 20px; }
+        .name-badge { font-size: 11px; font-weight: 800; background: linear-gradient(45deg, #6366f1, #a855f7); padding: 6px 16px; border-radius: 50px; display: inline-block; margin-bottom: 15px; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        .social-icons { font-size: 22px; margin-bottom: 12px; display: flex; justify-content: center; gap: 20px; }
         .fa-instagram { color: #e1306c; } .fa-youtube { color: #ff0000; }
-        .title { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 30px; letter-spacing: 1px; }
+        .title { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 30px; }
 
-        .input-box { width: 100%; padding: 18px; border-radius: 15px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 25px; box-sizing: border-box; font-size: 15px; outline: none; transition: 0.3s; }
-        .input-box:focus { border-color: #6366f1; box-shadow: 0 0 10px rgba(99, 102, 241, 0.2); }
-        
-        .gen-btn { background: linear-gradient(45deg, #4f46e5, #7c3aed); color: white; padding: 18px; border: none; border-radius: 15px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.3s; }
+        .input-box { width: 100%; padding: 18px; border-radius: 15px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 25px; box-sizing: border-box; font-size: 15px; outline: none; }
+        .gen-btn { background: linear-gradient(45deg, #4f46e5, #7c3aed); color: white; padding: 18px; border: none; border-radius: 15px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.3s; box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3); }
         .gen-btn:active { transform: scale(0.96); }
 
-        #status { display: none; margin-top: 25px; padding: 20px; background: rgba(16, 185, 129, 0.1); border-radius: 15px; border: 1px dashed #10b981; }
-        .final-btn { background: #10b981; color: white; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; display: block; margin-top: 15px; font-size: 14px; }
+        #status { display: none; margin-top: 25px; border-top: 1px solid #334155; padding-top: 20px; }
+        .option-btn { background: #10b981; color: white; padding: 14px; border-radius: 12px; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px; font-size: 14px; transition: 0.2s; }
+        .option-btn:hover { background: #059669; }
     </style>
 </head>
 <body>
@@ -33,32 +32,35 @@
         </div>
         <div class="title">PRO DOWNLOADER</div>
         
-        <input type="text" id="vUrl" class="input-box" placeholder="Paste link here...">
-        <button class="gen-btn" onclick="start()">GET DOWNLOAD LINK</button>
+        <input type="text" id="vUrl" class="input-box" placeholder="Paste link (Insta, YT, FB)...">
+        <button class="gen-btn" onclick="generate()">🚀 START DOWNLOADING</button>
 
         <div id="status">
-            <p style="color: #10b981; margin: 0; font-size: 14px;">✨ Success! Click below to save:</p>
-            <div id="btn-here"></div>
+            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 15px;">Choose a server to download:</p>
+            <div id="links"></div>
         </div>
 
-        <div style="margin-top: 35px; font-size: 10px; opacity: 0.3; letter-spacing: 1px;">SATHISH SERVER v8.0 • STABLE</div>
+        <div style="margin-top: 35px; font-size: 10px; opacity: 0.3;">© 2026 SATHISH SERVER v9.0 • MULTI-SERVER</div>
     </div>
 
     <script>
-        function start() {
+        function generate() {
             let u = document.getElementById('vUrl').value.trim();
-            if(!u) { alert("Please paste a link!"); return; }
+            if(!u) { alert("Please paste a link first!"); return; }
 
             document.getElementById('status').style.display = "block";
-            let container = document.getElementById('btn-here');
-            container.innerHTML = "<p style='font-size:12px; opacity:0.6;'>Generating high-speed link...</p>";
+            let container = document.getElementById('links');
+            
+            // అత్యంత శక్తివంతమైన 3 సర్వర్లు - ఒకటి కాకపోయినా ఒకటి పనిచేస్తుంది
+            let s1 = "https://snapsave.app/?url=" + encodeURIComponent(u);
+            let s2 = "https://y2mate.is/analyze?url=" + encodeURIComponent(u);
+            let s3 = "https://ssyoutube.com/en1/video-downloader?url=" + encodeURIComponent(u);
 
-            // ఈ ట్రిక్ ఐఫోన్ మరియు ఆండ్రాయిడ్ రెండిటిలోనూ బాగా పనిచేస్తుంది
-            // ఇది యూజర్ ని కన్ఫ్యూజ్ చేయకుండా నేరుగా ఫైల్ ని చూపిస్తుంది
-            setTimeout(() => {
-                let fastLink = "https://savemask.com/download?url=" + encodeURIComponent(u);
-                container.innerHTML = `<a href="${fastLink}" target="_blank" class="final-btn">📥 DOWNLOAD NOW</a>`;
-            }, 1200);
+            container.innerHTML = `
+                <a href="${s1}" target="_blank" class="option-btn">📥 SERVER 1 (Best for Insta/FB)</a>
+                <a href="${s2}" target="_blank" class="option-btn">📥 SERVER 2 (Best for YT/Audio)</a>
+                <a href="${s3}" target="_blank" class="option-btn">📥 SERVER 3 (High Speed)</a>
+            `;
         }
     </script>
 
