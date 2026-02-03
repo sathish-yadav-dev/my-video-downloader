@@ -7,40 +7,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background: #0f172a; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: #1e293b; padding: 30px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 380px; border: 1px solid #334155; }
-        h1 { color: #3b82f6; margin-bottom: 10px; }
-        .social-icons { margin-bottom: 20px; font-size: 30px; display: flex; justify-content: center; gap: 15px; }
+        .card { background: #1e293b; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 380px; border: 1px solid #334155; box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
+        h1 { color: #3b82f6; margin-bottom: 5px; }
+        .social-icons { margin: 20px 0; font-size: 32px; display: flex; justify-content: center; gap: 20px; }
         .fa-youtube { color: #ff0000; } .fa-instagram { color: #e1306c; } .fa-facebook { color: #1877f2; }
-        input { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; }
-        /* ఇక్కడ బటన్ ని నేరుగా లింక్ లాగా మార్చాను */
-        .dl-link { display: block; background: #3b82f6; color: white; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px; }
+        input { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; outline: none; }
+        /* బటన్‌ని నేరుగా లింక్ లాగా మార్చాను */
+        .dl-button { display: block; background: #3b82f6; color: white; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.3s; }
+        .dl-button:hover { background: #2563eb; }
     </style>
 </head>
 <body>
     <div class="card">
         <h1>🎥 Pro Downloader</h1>
+        <p style="opacity: 0.7; font-size: 14px;">YouTube • Instagram • Facebook</p>
         <div class="social-icons">
             <i class="fab fa-youtube"></i> <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i>
         </div>
-        <input type="text" id="vUrl" placeholder="Paste link here..." oninput="setLink()">
-        <a href="#" id="finalBtn" class="dl-link" target="_blank" onclick="return check()">Download Now</a>
-        <p id="st" style="margin-top:15px; font-size:12px; color:#94a3b8;"></p>
+        <input type="text" id="vUrl" placeholder="Paste link here..." oninput="updateUrl()">
+        <a href="#" id="finalBtn" class="dl-button" onclick="return validate()">Download Now</a>
+        <p id="status" style="margin-top: 15px; font-size: 12px; color: #94a3b8;"></p>
     </div>
+
     <script>
-        function setLink() {
+        function updateUrl() {
             let u = document.getElementById('vUrl').value;
             let btn = document.getElementById('finalBtn');
             if(u) {
-                // బటన్ క్లిక్ చేయకముందే లింక్ ని సిద్ధం చేస్తున్నాను
+                // SaveFrom సర్వర్ కి పక్కాగా రీడైరెక్ట్ చేస్తుంది
                 btn.href = "https://savefrom.net/?url=" + encodeURIComponent(u);
             }
         }
-        function check() {
+        function validate() {
             let u = document.getElementById('vUrl').value;
-            if(!u) { alert("Please paste a link!"); return false; }
-            document.getElementById('st').innerText = "🚀 Redirecting to Server...";
+            if(!u) { alert("Please paste a link first!"); return false; }
+            document.getElementById('status').innerText = "🚀 Redirecting to server...";
             return true;
         }
     </script>
 </body>
-</html>out
+</html>
