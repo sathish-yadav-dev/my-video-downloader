@@ -3,52 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SATHISH YADAV | Direct Access</title>
-    <link rel="stylesheethttps://www.instagram.com/reel/DPtjkhOk1R3/?igsh=amM5ZmF2dmg3Zm9y" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>SATHISH YADAV | Pro Downloader</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #050a18; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: #111827; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 400px; border: 1px solid #1f2937; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .badge { font-size: 10px; background: #4f46e5; padding: 5px 15px; border-radius: 50px; display: inline-block; margin-bottom: 15px; letter-spacing: 2px; font-weight: bold; }
-        .title { font-size: 24px; font-weight: 900; margin-bottom: 30px; letter-spacing: 1px; }
-        input { width: 100%; padding: 18px; border-radius: 12px; border: 2px solid #374151; background: #030712; color: white; margin-bottom: 25px; box-sizing: border-box; outline: none; font-size: 14px; }
+        body { background: #0b0f19; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .card { background: #161d2f; padding: 30px; border-radius: 25px; text-align: center; width: 85%; max-width: 380px; border: 1px solid #2e3a59; box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
         
-        /* ఈ బటన్ ని ఏ సర్వర్ బ్లాక్ చేయలేదు */
-        .master-btn { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; padding: 18px; border: none; border-radius: 12px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; box-shadow: 0 10px 20px rgba(220, 39, 67, 0.3); display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .master-btn:active { transform: scale(0.96); }
+        /* చిన్నగా కానీ హైలైట్ అయ్యే బ్రాండింగ్ */
+        .name-brand { 
+            font-size: 14px; 
+            font-weight: 800; 
+            letter-spacing: 3px; 
+            color: #fff; 
+            background: #4f46e5;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+        }
         
-        .note { margin-top: 25px; font-size: 11px; color: #94a3b8; line-height: 1.5; opacity: 0.7; }
+        .social-icons { font-size: 22px; margin-bottom: 12px; display: flex; justify-content: center; gap: 20px; opacity: 0.9; }
+        .fa-instagram { color: #e1306c; }
+        .fa-youtube { color: #ff0000; }
+        
+        .downloader-text { 
+            font-size: 24px; 
+            font-weight: 900; 
+            color: #4f46e5;
+            margin-bottom: 25px; 
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 15px; outline: none; }
+        
+        .main-btn { 
+            background: linear-gradient(45deg, #4f46e5, #3b82f6); 
+            color: white; 
+            padding: 16px; 
+            border: none; 
+            border-radius: 12px; 
+            width: 100%; 
+            font-weight: bold; 
+            font-size: 16px; 
+            cursor: pointer; 
+            transition: 0.2s; 
+            box-shadow: 0 8px 15px rgba(79, 70, 229, 0.3);
+        }
+        .main-btn:active { transform: scale(0.96); }
+        
+        .footer { margin-top: 25px; font-size: 10px; color: #94a3b8; opacity: 0.4; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <div class="badge">SATHISH YADAV PRO</div>
-        <div class="title">DIRECT SAVER</div>
+        <div class="name-brand">SATHISH YADAV</div>
         
-        <input type="text" id="vUrl" placeholder="Paste Instagram Link Here...">
+        <div class="social-icons">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
+        </div>
         
-        <button class="master-btn" onclick="startBypass()">
-            <i class="fas fa-bolt"></i> FETCH VIDEO
+        <div class="downloader-text">PRO DOWNLOADER</div>
+        
+        <input type="text" id="vUrl" placeholder="Paste Video Link Here...">
+        
+        <button class="main-btn" onclick="startDownload()">
+            <i class="fas fa-bolt"></i> DOWNLOAD NOW
         </button>
-
-        <p class="note">
-            బటన్ నొక్కగానే వీడియో లోడ్ అవుతుంది. అక్కడ "Download" నొక్కితే నేరుగా గ్యాలరీలోకి వచ్చేస్తుంది. ఎటువంటి అడ్వర్టైజ్మెంట్స్ ఉండవు.
-        </p>
         
-        <div style="margin-top:20px; font-size:9px; opacity:0.3;">STABLE ACCESS • v31.0</div>
+        <div class="footer">SATHISH SERVER v4.0 • FAST & SECURE</div>
     </div>
 
     <script>
-        function startBypass() {
+        function startDownload() {
             let u = document.getElementById('vUrl').value.trim();
             if(!u) { alert("Please paste a link first!"); return; }
-
-            // ఈ టెక్నిక్ గిట్‌హబ్ రిఫరర్ ని పూర్తిగా హైడ్ చేస్తుంది
-            // దీనివల్ల సర్వర్ కి మనం గిట్‌హబ్ నుండి వస్తున్నామని తెలియదు
-            let target = "https://snapinsta.app/api/redirect?url=" + encodeURIComponent(u);
             
-            // ఇది మొబైల్ లో చాలా ఫాస్ట్ గా ఓపెన్ అవుతుంది
-            window.location.href = target;
+            // Publer - ఇది చాలా ఫాస్ట్ మరియు క్లీన్ గా ఉంటుంది
+            let finalServer = "https://publer.io/tools/media-downloader?url=" + encodeURIComponent(u);
+            window.location.href = finalServer;
         }
     </script>
 
