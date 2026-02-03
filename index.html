@@ -3,89 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SATHISH YADAV | Pro Downloader</title>
+    <title>SATHISH YADAV | Pro Saver</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0b0f19; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: #161d2f; padding: 30px; border-radius: 25px; text-align: center; width: 85%; max-width: 380px; border: 1px solid #2e3a59; box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
+        body { background: #0b0f19; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
+        .card { background: #161d2f; padding: 25px; border-radius: 20px; max-width: 400px; margin: auto; border: 1px solid #2e3a59; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .badge { font-size: 10px; background: #4f46e5; padding: 5px 15px; border-radius: 50px; display: inline-block; margin-bottom: 15px; letter-spacing: 2px; }
+        input { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; outline: none; }
+        .gen-btn { background: #4f46e5; color: white; padding: 15px; border: none; border-radius: 12px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.3s; }
         
-        /* చిన్నగా కానీ హైలైట్ అయ్యే బ్రాండింగ్ */
-        .name-brand { 
-            font-size: 14px; 
-            font-weight: 800; 
-            letter-spacing: 3px; 
-            color: #fff; 
-            background: #4f46e5;
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 50px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
-        }
-        
-        .social-icons { font-size: 22px; margin-bottom: 12px; display: flex; justify-content: center; gap: 20px; opacity: 0.9; }
-        .fa-instagram { color: #e1306c; }
-        .fa-youtube { color: #ff0000; }
-        
-        .downloader-text { 
-            font-size: 24px; 
-            font-weight: 900; 
-            color: #4f46e5;
-            margin-bottom: 25px; 
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 15px; outline: none; }
-        
-        .main-btn { 
-            background: linear-gradient(45deg, #4f46e5, #3b82f6); 
-            color: white; 
-            padding: 16px; 
-            border: none; 
-            border-radius: 12px; 
-            width: 100%; 
-            font-weight: bold; 
-            font-size: 16px; 
-            cursor: pointer; 
-            transition: 0.2s; 
-            box-shadow: 0 8px 15px rgba(79, 70, 229, 0.3);
-        }
-        .main-btn:active { transform: scale(0.96); }
-        
-        .footer { margin-top: 25px; font-size: 10px; color: #94a3b8; opacity: 0.4; letter-spacing: 1px; }
+        /* Publer ని నీ సైట్ లోకి తెచ్చే విండో */
+        #frame-container { display: none; margin-top: 20px; width: 100%; height: 600px; border-radius: 15px; overflow: hidden; border: 2px solid #4f46e5; background: white; }
+        iframe { width: 100%; height: 100%; border: none; }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <div class="name-brand">SATHISH YADAV</div>
+        <div class="badge">SATHISH YADAV DEV</div>
+        <h2 style="margin: 0 0 20px 0;">INSTA SAVER v29.0</h2>
         
-        <div class="social-icons">
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-youtube"></i>
+        <input type="text" id="vUrl" placeholder="Paste Instagram Link Here...">
+        <button class="gen-btn" onclick="loadEngine()">🚀 GENERATE DOWNLOAD</button>
+
+        <div id="frame-container">
+            <iframe id="publerFrame" src=""></iframe>
         </div>
-        
-        <div class="downloader-text">PRO DOWNLOADER</div>
-        
-        <input type="text" id="vUrl" placeholder="Paste Video Link Here...">
-        
-        <button class="main-btn" onclick="startDownload()">
-            <i class="fas fa-bolt"></i> DOWNLOAD NOW
-        </button>
-        
-        <div class="footer">SATHISH SERVER v4.0 • FAST & SECURE</div>
+
+        <p style="font-size: 10px; opacity: 0.4; margin-top: 20px;">SAFE • SECURE • NO REDIRECTS</p>
     </div>
 
     <script>
-        function startDownload() {
+        function loadEngine() {
             let u = document.getElementById('vUrl').value.trim();
-            if(!u) { alert("Please paste a link first!"); return; }
+            if(!u) { alert("Please paste a link!"); return; }
+
+            const container = document.getElementById('frame-container');
+            const frame = document.getElementById('publerFrame');
             
-            // Publer - ఇది చాలా ఫాస్ట్ మరియు క్లీన్ గా ఉంటుంది
-            let finalServer = "https://publer.io/tools/media-downloader?url=" + encodeURIComponent(u);
-            window.location.href = finalServer;
+            // నీ స్క్రీన్ షాట్ లో ఉన్న ఆ సర్వర్ ని నీ సైట్ లోకి లోడ్ చేస్తున్నాను
+            // దీనివల్ల 403 Forbidden ఎర్రర్ రాదు
+            frame.src = "https://publer.io/tools/media-downloader?url=" + encodeURIComponent(u);
+            container.style.display = "block";
+            
+            // బటన్ హైడ్ చేయి
+            document.querySelector('.gen-btn').innerHTML = "RE-GENERATE LINK";
         }
     </script>
 
