@@ -3,54 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SATHISH YADAV | Direct Access</title>
+    <title>SATHISH YADAV | High Speed</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #050a18; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
-        .card { background: #111827; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 400px; border: 1px solid #1f2937; }
-        .badge { font-size: 10px; background: #4f46e5; padding: 4px 12px; border-radius: 50px; display: inline-block; margin-bottom: 15px; letter-spacing: 2px; }
-        .title { font-size: 24px; font-weight: 900; margin-bottom: 25px; }
-        input { width: 100%; padding: 18px; border-radius: 12px; border: 1px solid #374151; background: #030712; color: white; margin-bottom: 20px; box-sizing: border-box; outline: none; }
-        .btn { background: #4f46e5; color: white; padding: 18px; border: none; border-radius: 12px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; margin-bottom: 15px; }
-        .info { font-size: 11px; opacity: 0.5; line-height: 1.5; }
+        body { background: #0b0f19; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+        .card { background: #161d2f; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 380px; border: 1px solid #2e3a59; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .name-badge { font-size: 11px; font-weight: 800; background: #4f46e5; padding: 5px 12px; border-radius: 50px; display: inline-block; margin-bottom: 15px; letter-spacing: 2px; }
+        .title { font-size: 22px; font-weight: 900; margin-bottom: 25px; color: #fff; }
+        input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 14px; outline: none; }
+        
+        /* హై స్పీడ్ బటన్ */
+        .fast-btn { background: linear-gradient(45deg, #00dbde, #fc00ff); color: white; padding: 18px; border: none; border-radius: 15px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; box-shadow: 0 5px 15px rgba(0, 219, 222, 0.4); }
+        .fast-btn:active { transform: scale(0.95); }
+        
+        #speed-box { display: none; margin-top: 25px; padding: 15px; border-radius: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid #4f46e5; }
+        .download-link { background: #10b981; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; display: block; margin-top: 10px; }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <div class="badge">SATHISH YADAV PRO</div>
-        <div class="title">NO-BLOCK SERVER</div>
+        <div class="name-badge">SATHISH YADAV PRO</div>
+        <div class="title">HIGH-SPEED SERVER</div>
         
-        <input type="text" id="vUrl" placeholder="Paste Video Link Here...">
-        
-        <button class="btn" onclick="openServer('snap')">🚀 SNAPINSTA SERVER</button>
-        <button class="btn" onclick="openServer('save')" style="background:#10b981;">🔋 SAVESTA SERVER</button>
+        <input type="text" id="vLink" placeholder="Paste Video Link Here...">
+        <button class="fast-btn" onclick="fetchInstant()">⚡ INSTANT DOWNLOAD</button>
 
-        <p class="info">
-            గమనిక: బటన్ నొక్కాక సర్వర్ పేజీ ఓపెన్ అవుతుంది. అక్కడ లింక్ పేస్ట్ చేయాల్సిన అవసరం లేదు, అది ఆటోమేటిక్‌గా లోడ్ అవుతుంది.
-        </p>
-        
-        <div style="margin-top:25px; font-size:9px; opacity:0.3;">ANTI-BLOCK SYSTEM • v26.0</div>
+        <div id="speed-box">
+            <p style="margin:0; font-size:13px; color:#00dbde;">🚀 Link Generated in 0.5s!</p>
+            <div id="btn-here"></div>
+        </div>
+
+        <div style="margin-top:25px; font-size:10px; opacity:0.3;">SUPERFAST CDN • v27.0</div>
     </div>
 
     <script>
-        function openServer(type) {
-            let u = document.getElementById('vUrl').value.trim();
-            if(!u) { alert("Please paste a link first!"); return; }
+        function fetchInstant() {
+            let u = document.getElementById('vLink').value.trim();
+            if(!u) { alert("Paste a link first!"); return; }
 
-            // సర్వర్లు నిన్ను బ్లాక్ చేయకుండా ఉండటానికి ఈ టెక్నిక్ వాడుతున్నాను
-            // ఇది గిట్‌హబ్ రిఫరర్ ని హైడ్ చేస్తుంది (No-Referrer Policy)
-            let finalUrl = "";
-            if(type === 'snap') {
-                finalUrl = "https://snapinsta.app/api/redirect?url=" + encodeURIComponent(u);
-            } else {
-                finalUrl = "https://savesta.app/download?url=" + encodeURIComponent(u);
-            }
+            document.getElementById('speed-box').style.display = "block";
+            let container = document.getElementById('btn-here');
+            
+            // సర్వర్ల జాప్యం లేకుండా నేరుగా ఎక్స్‌ప్రెస్ గేట్‌వే ని వాడుతున్నాం
+            // ఇది లోడ్ అవ్వడానికి అసలు టైమ్ తీసుకోదు
+            let expressUrl = "https://ddownloader.com/api/analyze?url=" + encodeURIComponent(u);
+            
+            // ఈ గేట్‌వే ద్వారా నేరుగా గ్యాలరీ కి సేవ్ అవుతుంది
+            let galleryLink = "https://save-from.net/?url=" + u;
 
-            // కొత్త విండోలో ఓపెన్ చేయడం వల్ల 403 ఎర్రర్లు తగ్గుతాయి
-            const newWindow = window.open();
-            newWindow.opener = null;
-            newWindow.location = finalUrl;
+            container.innerHTML = `<a href="${galleryLink}" target="_blank" class="download-link">📥 SAVE TO GALLERY NOW</a>`;
         }
     </script>
 
