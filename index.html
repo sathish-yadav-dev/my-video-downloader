@@ -75,25 +75,22 @@
         <div class="footer">SATHISH SERVER v4.0 • FAST & SECURE</div>
     </div>
 
-     <script>
-        async function startDownload() {
-            let u = document.getElementById('vUrl').value.trim();
-            if(!u) { alert("Please paste a link first!"); return; }
-            
-            // యూజర్ సౌలభ్యం కోసం బ్యాక్‌గ్రౌండ్‌లో లింక్ కాపీ చేస్తుంది
-            try {
-                await navigator.clipboard.writeText(u);
-            } catch (err) {
-                console.log("Clipboard error");
+         <script>
+        function startDownload() {
+            var u = document.getElementById('vUrl').value.trim();
+            if(!u) { 
+                alert("Please paste a link first!"); 
+                return; 
             }
 
-            // SaveFrom.net సర్వర్‌ని వాడుతున్నాం, ఇది లింక్‌ని ఆటోమేటిక్‌గా రీడ్ చేస్తుంది
-            let finalServer = "https://savefrom.net/?url=" + encodeURIComponent(u);
-            
-            // నేరుగా కొత్త పేజీకి రీడైరెక్ట్ చేస్తుంది
-            window.location.href = finalServer;
+            // SaveFrom.net సర్వర్ లింక్
+            var finalServer = "https://savefrom.net/?url=" + encodeURIComponent(u);
+
+            // రీడైరెక్ట్ చేయడం
+            window.location.assign(finalServer);
         }
     </script>
+
 
 </body>
 </html>
