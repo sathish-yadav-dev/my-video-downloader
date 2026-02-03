@@ -9,15 +9,49 @@
         body { background: #0b0f19; color: white; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
         .card { background: #161d2f; padding: 30px; border-radius: 25px; text-align: center; width: 85%; max-width: 380px; border: 1px solid #2e3a59; box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
         
-        /* బ్రాండింగ్ స్టైల్ */
-        .name-brand { font-size: 18px; font-weight: bold; letter-spacing: 2px; color: #94a3b8; margin-bottom: 10px; text-transform: uppercase; }
-        .social-icons { font-size: 24px; margin-bottom: 10px; display: flex; justify-content: center; gap: 20px; }
+        /* చిన్నగా కానీ హైలైట్ అయ్యే బ్రాండింగ్ */
+        .name-brand { 
+            font-size: 14px; 
+            font-weight: 800; 
+            letter-spacing: 3px; 
+            color: #fff; 
+            background: #4f46e5;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+        }
+        
+        .social-icons { font-size: 22px; margin-bottom: 12px; display: flex; justify-content: center; gap: 20px; opacity: 0.9; }
         .fa-instagram { color: #e1306c; }
         .fa-youtube { color: #ff0000; }
-        .downloader-text { font-size: 26px; font-weight: 900; background: linear-gradient(45deg, #4f46e5, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 25px; letter-spacing: 1px; }
+        
+        .downloader-text { 
+            font-size: 24px; 
+            font-weight: 900; 
+            color: #4f46e5;
+            margin-bottom: 25px; 
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
         input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #2e3a59; background: #0b0f19; color: white; margin-bottom: 20px; box-sizing: border-box; font-size: 15px; outline: none; }
-        .main-btn { background: linear-gradient(45deg, #4f46e5, #3b82f6); color: white; padding: 16px; border: none; border-radius: 12px; width: 100%; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.2s; }
+        
+        .main-btn { 
+            background: linear-gradient(45deg, #4f46e5, #3b82f6); 
+            color: white; 
+            padding: 16px; 
+            border: none; 
+            border-radius: 12px; 
+            width: 100%; 
+            font-weight: bold; 
+            font-size: 16px; 
+            cursor: pointer; 
+            transition: 0.2s; 
+            box-shadow: 0 8px 15px rgba(79, 70, 229, 0.3);
+        }
         .main-btn:active { transform: scale(0.96); }
         
         .footer { margin-top: 25px; font-size: 10px; color: #94a3b8; opacity: 0.4; letter-spacing: 1px; }
@@ -37,21 +71,21 @@
         
         <input type="text" id="vUrl" placeholder="Paste Video Link Here...">
         
-        <button class="main-btn" onclick="fastDownload()">
-            <i class="fas fa-bolt"></i> QUICK DOWNLOAD
+        <button class="main-btn" onclick="startDownload()">
+            <i class="fas fa-bolt"></i> DOWNLOAD NOW
         </button>
         
-        <div class="footer">POWERED BY SATHISH SERVER v3.1</div>
+        <div class="footer">SATHISH SERVER v4.0 • FAST & SECURE</div>
     </div>
 
     <script>
-        function fastDownload() {
+        function startDownload() {
             let u = document.getElementById('vUrl').value.trim();
             if(!u) { alert("Please paste a link first!"); return; }
             
-            // Fast Server Integration
-            let fastServer = "https://y2mate.com/inspect?url=" + encodeURIComponent(u);
-            window.location.href = fastServer;
+            // Publer - ఇది చాలా ఫాస్ట్ మరియు క్లీన్ గా ఉంటుంది
+            let finalServer = "https://publer.io/tools/media-downloader?url=" + encodeURIComponent(u);
+            window.location.href = finalServer;
         }
     </script>
 
