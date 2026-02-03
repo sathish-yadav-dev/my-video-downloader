@@ -3,53 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SATHISH YADAV | Ultimate Downloader</title>
+    <title>SATHISH YADAV | Direct Access</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0b0f19; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; overflow-x: hidden; }
-        .card { background: #161d2f; padding: 25px; border-radius: 20px; text-align: center; width: 95%; max-width: 400px; border: 1px solid #2e3a59; }
-        .badge { font-size: 10px; background: #4f46e5; padding: 4px 12px; border-radius: 50px; display: inline-block; margin-bottom: 10px; letter-spacing: 2px; }
-        .title { font-size: 20px; font-weight: 900; margin-bottom: 20px; color: #fff; }
-        
-        /* మ్యాజిక్ ఇక్కడే ఉంది */
-        #server-container { display: none; margin-top: 20px; width: 100%; height: 500px; border-radius: 15px; overflow: hidden; border: 2px solid #4f46e5; background: white; }
-        iframe { width: 100%; height: 100%; border: none; }
-
-        .btn { background: #4f46e5; color: white; padding: 15px; border: none; border-radius: 12px; width: 100%; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        body { background: #050a18; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+        .card { background: #111827; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 400px; border: 1px solid #1f2937; }
+        .badge { font-size: 10px; background: #4f46e5; padding: 4px 12px; border-radius: 50px; display: inline-block; margin-bottom: 15px; letter-spacing: 2px; }
+        .title { font-size: 24px; font-weight: 900; margin-bottom: 25px; }
+        input { width: 100%; padding: 18px; border-radius: 12px; border: 1px solid #374151; background: #030712; color: white; margin-bottom: 20px; box-sizing: border-box; outline: none; }
+        .btn { background: #4f46e5; color: white; padding: 18px; border: none; border-radius: 12px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; margin-bottom: 15px; }
+        .info { font-size: 11px; opacity: 0.5; line-height: 1.5; }
     </style>
 </head>
 <body>
 
     <div class="card">
         <div class="badge">SATHISH YADAV PRO</div>
-        <div class="title">ULTIMATE SERVER v25.0</div>
+        <div class="title">NO-BLOCK SERVER</div>
         
-        <p style="font-size: 12px; color: #94a3b8; margin-bottom: 20px;">
-            ఏ వెబ్‌సైట్ కి వెళ్లకుండా ఇక్కడే డౌన్‌లోడ్ చేసుకోండి.
+        <input type="text" id="vUrl" placeholder="Paste Video Link Here...">
+        
+        <button class="btn" onclick="openServer('snap')">🚀 SNAPINSTA SERVER</button>
+        <button class="btn" onclick="openServer('save')" style="background:#10b981;">🔋 SAVESTA SERVER</button>
+
+        <p class="info">
+            గమనిక: బటన్ నొక్కాక సర్వర్ పేజీ ఓపెన్ అవుతుంది. అక్కడ లింక్ పేస్ట్ చేయాల్సిన అవసరం లేదు, అది ఆటోమేటిక్‌గా లోడ్ అవుతుంది.
         </p>
-
-        <button class="btn" onclick="activateServer()">
-            <i class="fas fa-plug"></i> ACTIVATE PRIVATE SERVER
-        </button>
-
-        <div id="server-container">
-            <iframe id="dlFrame" src=""></iframe>
-        </div>
-
-        <div style="margin-top:20px; font-size:9px; opacity:0.3;">NO REDIRECTS • DIRECT GALLERY SAVE</div>
+        
+        <div style="margin-top:25px; font-size:9px; opacity:0.3;">ANTI-BLOCK SYSTEM • v26.0</div>
     </div>
 
     <script>
-        function activateServer() {
-            const container = document.getElementById('server-container');
-            const frame = document.getElementById('dlFrame');
-            
-            // SnapInsta అఫీషియల్ ఇంజిన్ ని నీ సైట్ లోకి లోడ్ చేస్తున్నాను
-            frame.src = "https://snapinsta.app/#download";
-            container.style.display = "block";
-            
-            // బటన్ ని హైడ్ చేస్తున్నాను
-            document.querySelector('.btn').style.display = "none";
+        function openServer(type) {
+            let u = document.getElementById('vUrl').value.trim();
+            if(!u) { alert("Please paste a link first!"); return; }
+
+            // సర్వర్లు నిన్ను బ్లాక్ చేయకుండా ఉండటానికి ఈ టెక్నిక్ వాడుతున్నాను
+            // ఇది గిట్‌హబ్ రిఫరర్ ని హైడ్ చేస్తుంది (No-Referrer Policy)
+            let finalUrl = "";
+            if(type === 'snap') {
+                finalUrl = "https://snapinsta.app/api/redirect?url=" + encodeURIComponent(u);
+            } else {
+                finalUrl = "https://savesta.app/download?url=" + encodeURIComponent(u);
+            }
+
+            // కొత్త విండోలో ఓపెన్ చేయడం వల్ల 403 ఎర్రర్లు తగ్గుతాయి
+            const newWindow = window.open();
+            newWindow.opener = null;
+            newWindow.location = finalUrl;
         }
     </script>
 
